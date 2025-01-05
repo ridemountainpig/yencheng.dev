@@ -14,7 +14,7 @@ export default function Title({
     return (
         <div className="relative inline-block overflow-hidden">
             <motion.span
-                className={`absolute bottom-1 left-0 h-5 w-full ${bgColor} opacity-90`}
+                className={`absolute bottom-1 left-0 h-4 w-full ${bgColor} opacity-90`}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}

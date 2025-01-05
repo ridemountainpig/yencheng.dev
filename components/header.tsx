@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
 
 export default function Header() {
     return (
@@ -19,6 +19,12 @@ export default function Header() {
                     className="rounded-xl bg-white-brown-500 p-2 text-white-brown-800"
                 >
                     <Linkedin size={30} strokeWidth={2.25} />
+                </Link>
+                <Link
+                    href="https://x.com/ridemountainpig"
+                    className="rounded-xl bg-white-brown-500 p-2 text-white-brown-800"
+                >
+                    <Twitter size={30} strokeWidth={2.25} />
                 </Link>
             </div>
         </header>

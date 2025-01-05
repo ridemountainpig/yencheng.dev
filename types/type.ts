@@ -1,3 +1,4 @@
+// Mac screen types
 export interface DockItem {
     src: string;
     alt: string;
@@ -20,4 +21,20 @@ export interface InfoStyle {
     bg: string;
     secondBg: string;
     icon: string;
+}
+
+// Raycast Extension types
+export interface Extension {
+    name: string;
+    store_url: string;
+    download_count: number;
+    title: string;
+    description: string;
+    source_url: string;
+    readme_url: string;
+    readme_assets_path: string;
+    icons: {
+        light: string | null;
+        dark: string | null;
+    };
 }

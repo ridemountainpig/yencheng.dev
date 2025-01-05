@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/react";
+import { Rwdot } from "rwdot";
 import "./globals.css";
 
 const genSenB = localFont({
@@ -22,6 +24,11 @@ export default function RootLayout({
             <body
                 className={`${genSenB.variable} bg-white-black-50 antialiased`}
             >
+                <Analytics />
+                <Rwdot
+                    position="bottom-right"
+                    show={process.env.RWDOT == "dev"}
+                />
                 {children}
             </body>
         </html>
