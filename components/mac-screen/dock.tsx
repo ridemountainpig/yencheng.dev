@@ -156,7 +156,7 @@ export default function Dock() {
 
     return (
         <>
-            <div className="absolute bottom-[5rem] left-1/2 flex h-[86%] w-[95%] -translate-x-1/2 transform">
+            <div className="absolute bottom-[5rem] left-1/2 flex h-[86%] w-full -translate-x-1/2 transform sm:w-[95%]">
                 <Screen
                     url={screenState.url}
                     infoShow={screenState.showInfo}
@@ -168,8 +168,8 @@ export default function Dock() {
                 />
             </div>
 
-            <div className="group absolute bottom-2 left-1/2 flex h-[4rem] -translate-x-1/2 transform items-center justify-center gap-x-3 rounded-2xl bg-menubar bg-opacity-40 p-3">
-                <div className="flex items-center gap-x-3 group-hover:hidden">
+            <div className="group absolute bottom-0 left-1/2 flex h-[4rem] w-[88%] -translate-x-1/2 transform items-center justify-center rounded-[1.25rem] bg-white-brown-600 bg-opacity-50 p-2 sm:bottom-2 sm:w-fit sm:rounded-2xl sm:bg-menubar sm:bg-opacity-40 sm:p-3">
+                <div className="flex h-full items-center gap-x-2 sm:gap-x-3 md:group-hover:hidden">
                     {dockItems.map((item, index) => (
                         <DockItemButton
                             key={item.url}
@@ -180,7 +180,7 @@ export default function Dock() {
                     ))}
                 </div>
 
-                <div className="hidden group-hover:block">
+                <div className="hidden md:group-hover:block">
                     <DynamicDock gapX={10} imageWidth={50}>
                         {dockItems.map((item, index) => (
                             <DockItemButton

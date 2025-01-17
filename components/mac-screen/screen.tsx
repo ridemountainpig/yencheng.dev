@@ -44,31 +44,37 @@ export default function Screen({
         .replace(/^\//, "");
 
     return (
-        <div className="relative flex h-full w-full select-none flex-col overflow-hidden rounded-2xl bg-white">
-            <div className="flex h-12 w-full items-center justify-between bg-[#F9FBFD] px-6 opacity-85">
-                <div className="flex w-36 items-center justify-center gap-2">
-                    <div className="h-3 w-3 rounded-full bg-[#FF5F56]"></div>
-                    <div className="h-3 w-3 rounded-full bg-[#FFBD2E]"></div>
-                    <div className="h-3 w-3 rounded-full bg-[#27C93F]"></div>
-                    <ChevronLeft size={28} strokeWidth={2} className="ml-4" />
-                    <ChevronRight size={28} strokeWidth={2} />
-                </div>
-                <div className="flex h-8 w-[35%] items-center justify-center rounded-md bg-[#CCD3D8]">
-                    <span className="select-none text-center text-xs font-semibold text-white-black-900">
-                        {displayUrl}
-                    </span>
-                </div>
-                <div className="flex w-36 items-center justify-end px-2">
-                    {infoShow && (
-                        <button
-                            className="relative cursor-pointer"
-                            onClick={() => setShowInfo(!showInfo)}
-                            type="button"
-                        >
-                            <div className="absolute inset-0 h-6 w-6 animate-ping rounded-full bg-white-black-500 opacity-75"></div>
-                            <InfoIcon className="relative text-white-black-900" />
-                        </button>
-                    )}
+        <div className="relative flex h-full w-full select-none flex-col overflow-hidden rounded-2xl bg-white shadow-2xl shadow-white-brown-600 sm:shadow-none">
+            <div className="hidden w-full sm:block">
+                <div className="flex h-12 w-full items-center justify-between bg-[#F9FBFD] px-6 opacity-85">
+                    <div className="flex w-36 items-center justify-center gap-2">
+                        <div className="h-3 w-3 rounded-full bg-[#FF5F56]"></div>
+                        <div className="h-3 w-3 rounded-full bg-[#FFBD2E]"></div>
+                        <div className="h-3 w-3 rounded-full bg-[#27C93F]"></div>
+                        <ChevronLeft
+                            size={28}
+                            strokeWidth={2}
+                            className="ml-4"
+                        />
+                        <ChevronRight size={28} strokeWidth={2} />
+                    </div>
+                    <div className="flex h-8 w-[35%] items-center justify-center rounded-md bg-[#CCD3D8]">
+                        <span className="select-none text-center text-xs font-semibold text-white-black-900">
+                            {displayUrl}
+                        </span>
+                    </div>
+                    <div className="flex w-36 items-center justify-end px-2">
+                        {infoShow && (
+                            <button
+                                className="relative cursor-pointer"
+                                onClick={() => setShowInfo(!showInfo)}
+                                type="button"
+                            >
+                                <div className="absolute inset-0 h-6 w-6 animate-ping rounded-full bg-white-black-500 opacity-75"></div>
+                                <InfoIcon className="relative text-white-black-900" />
+                            </button>
+                        )}
+                    </div>
                 </div>
             </div>
 

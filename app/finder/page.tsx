@@ -12,6 +12,7 @@ export default function Finder() {
         },
         {
             title: "Siemens",
+            titleLink: "https://www.siemens.com/global/en.html",
             jobTitle: "Software Engineer Intern",
             date: "2023/04 - 2023/07",
             description:
@@ -21,16 +22,18 @@ export default function Finder() {
 
     return (
         <div className="flex max-h-fit min-h-screen w-full items-center justify-center bg-white font-gensenb tracking-wider text-white-black-900">
-            <div className="w-[80%] max-w-xl bg-white pt-12 text-left">
+            <div className="w-[90%] max-w-xl bg-white pt-6 text-left sm:w-[80%] sm:pt-12">
                 <div className="pb-6">
                     <h2 className="text-xl">Hi, i&apos;m Yen Cheng</h2>
                     <div className="mt-4 flex h-fit items-center">
                         <MapPin size={18} />
-                        <span className="pl-2 text-sm">Taichung, Taiwan</span>
+                        <span className="pl-2 text-xs sm:text-sm">
+                            Taichung, Taiwan
+                        </span>
                     </div>
                     <div className="mt-4 flex h-fit items-center">
                         <Briefcase size={18} />
-                        <span className="pl-2 text-sm">
+                        <span className="pl-2 text-xs sm:text-sm">
                             Master&apos;s Student, Feng Chia University
                         </span>
                     </div>
@@ -41,12 +44,12 @@ export default function Finder() {
                         rel="noreferrer"
                     >
                         <FileUser size={18} />
-                        <span className="pl-2 text-sm underline underline-offset-2">
+                        <span className="pl-2 text-xs underline underline-offset-2 sm:text-sm">
                             My Resume
                         </span>
                     </a>
                     <div className="mt-4">
-                        <span className="text-sm">
+                        <span className="text-xs sm:text-sm">
                             A full-stack developer from Taiwan 🇹🇼, driven by a
                             passion for creating amazing things ✨. When not
                             contributing to open-source projects 🤝, you’ll find
@@ -75,11 +78,11 @@ export default function Finder() {
                                     </span>
                                 )}
                             </div>
-                            <div className="flex h-fit items-center gap-x-2 py-2 text-sm">
+                            <div className="flex h-fit items-center gap-x-2 py-2 text-xs sm:text-sm">
                                 <span>{item.jobTitle}</span>
                                 <span>{item.date}</span>
                             </div>
-                            <div className="py-1 text-sm">
+                            <div className="py-1 text-xs sm:text-sm">
                                 {item.description}
                             </div>
                         </div>
@@ -87,20 +90,28 @@ export default function Finder() {
                 </div>
                 <div className="pb-6">
                     <h3 className="text-xl">Project</h3>
-                    <div className="flex h-fit items-center gap-x-3 py-2 text-sm">
-                        <HardDriveDownload size={20} />
-                        <span className="text-sm">
+                    <div className="flex h-fit items-center gap-x-3 py-2">
+                        <HardDriveDownload
+                            size={20}
+                            className="hidden sm:block"
+                        />
+                        {/* <HardDriveDownload size={16} className="sm:hidden" /> */}
+                        <span className="text-xs sm:text-sm">
                             Click the under dock item to view my projects.
                         </span>
-                        <HardDriveDownload size={20} />
+                        <HardDriveDownload
+                            size={20}
+                            className="hidden sm:block"
+                        />
+                        {/* <HardDriveDownload size={16} className="sm:hidden" /> */}
                     </div>
                 </div>
                 <div className="pb-6">
                     <h3 className="text-xl">Link</h3>
-                    <div className="flex h-fit items-center gap-x-3 py-2 text-sm">
+                    <div className="flex h-fit items-center gap-x-3 py-2 text-xs sm:text-sm">
                         <a
                             href="https://github.com/ridemountainpig"
-                            className="text-sm underline underline-offset-2"
+                            className="underline underline-offset-2"
                             target="_blank"
                             rel="noreferrer"
                         >
@@ -108,7 +119,7 @@ export default function Finder() {
                         </a>
                         <a
                             href="https://www.linkedin.com/in/%E5%BD%A5%E6%88%90-%E6%9E%97-22948823a/"
-                            className="text-sm underline underline-offset-2"
+                            className="underline underline-offset-2"
                             target="_blank"
                             rel="noreferrer"
                         >
@@ -116,7 +127,7 @@ export default function Finder() {
                         </a>
                         <a
                             href="https://twitter.com/ridemountainpig"
-                            className="text-sm underline underline-offset-2"
+                            className="underline underline-offset-2"
                             target="_blank"
                             rel="noreferrer"
                         >
@@ -124,7 +135,7 @@ export default function Finder() {
                         </a>
                         <a
                             href="mailto:lin0905580802@gmail.com"
-                            className="text-sm underline underline-offset-2"
+                            className="underline underline-offset-2"
                             target="_blank"
                             rel="noreferrer"
                         >

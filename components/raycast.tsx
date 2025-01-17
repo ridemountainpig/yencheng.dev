@@ -15,8 +15,8 @@ export default async function Raycast() {
             <div className="flex justify-center">
                 <Title title="My Raycast Extensions"></Title>
             </div>
-            <div className="flex h-[90vh] w-full items-center justify-center">
-                <div className="h-[472px] w-[750px] select-none rounded-2xl border-[1px] border-white-brown-600 bg-white-brown-500 font-gensenb text-white-black-900 shadow-lg shadow-white-black-200">
+            <div className="flex w-full items-center justify-center py-10 md:h-[90vh] md:py-0">
+                <div className="h-[472px] w-[96%] select-none rounded-2xl border-[1px] border-white-brown-600 bg-white-brown-500 font-gensenb text-white-black-900 shadow-lg shadow-white-black-200 md:w-[750px]">
                     <div className="h-[55px] border-b-[1px] border-white-brown-600 border-opacity-70 p-[18px]">
                         <span className="tracking-wider">
                             Yen Cheng Raycast Extensions...

@@ -27,7 +27,7 @@ export default function Banner() {
             <div className="w-full text-center">
                 <h2 className="hidden">Hello, I&apos;m Yen Cheng Lin</h2>
                 <motion.div
-                    className="text-6xl"
+                    className="text-4xl sm:text-6xl"
                     initial={{ opacity: 0, scale: 1, y: 50 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
@@ -35,9 +35,9 @@ export default function Banner() {
                     Hello
                 </motion.div>
                 <br />
-                <div className="flex h-fit items-center justify-center py-4 text-5xl">
+                <div className="flex h-fit items-center justify-center py-4 text-3xl sm:text-5xl">
                     <motion.div
-                        className="px-4"
+                        className="pr-4"
                         initial={{ opacity: 0, scale: 1, y: 50 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{

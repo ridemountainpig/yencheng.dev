@@ -24,7 +24,7 @@ export default function RaycastExtFirstItem({
                 alt={extension.title}
             />
             <span className="ml-3 text-sm">{extension.title}</span>
-            <span className="ml-3 text-sm text-white-black-700">
+            <span className="ml-3 hidden text-sm text-white-black-700 md:block">
                 {extension.description.length > 45
                     ? extension.description.slice(0, 45) + "..."
                     : extension.description}
