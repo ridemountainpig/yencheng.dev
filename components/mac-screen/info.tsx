@@ -28,7 +28,7 @@ export default function Info({
                 <Title title={title} bgColor={style.secondBg} />
             </div>
 
-            <div className="p-6 text-lg">
+            <div className={`text-md p-6 lg:text-lg ${style.bg}`}>
                 <SecondTitle title="Introduction" bgColor={style.secondBg} />
                 {description.split("\n").map((item, index) => (
                     <p key={index} className="py-2">
@@ -37,7 +37,7 @@ export default function Info({
                 ))}
             </div>
 
-            <div className="px-6 pb-6 text-lg">
+            <div className={`text-md px-6 pb-6 lg:text-lg ${style.bg}`}>
                 <SecondTitle title="Tech" bgColor={style.secondBg} />
                 <div
                     className={`mt-4 rounded-xl ${style.secondBg} bg-opacity-50`}
@@ -53,7 +53,7 @@ export default function Info({
             </div>
 
             {picture && picture.length > 0 && (
-                <div className="px-6 pb-6 text-lg">
+                <div className={`text-md px-6 pb-6 lg:text-lg ${style.bg}`}>
                     <SecondTitle title="Screenshot" bgColor={style.secondBg} />
                     <div className="grid grid-cols-2 gap-2">
                         {picture.map((item, index) => (
@@ -63,7 +63,7 @@ export default function Info({
                                     alt={item.description}
                                     className="rounded-xl"
                                 />
-                                <div className="mt-1 flex w-full justify-center text-lg">
+                                <div className="text-md mt-1 flex w-full justify-center lg:text-lg">
                                     <span>{item.description}</span>
                                 </div>
                             </div>

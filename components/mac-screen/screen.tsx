@@ -80,7 +80,7 @@ export default function Screen({
 
             {showInfo && (
                 <div
-                    className={`no-scrollbar absolute left-1/2 top-1/2 h-fit max-h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-scroll rounded-2xl border-8 ${style?.border} bg-opacity-100`}
+                    className={`no-scrollbar absolute left-1/2 top-[53%] h-[65vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-scroll rounded-2xl border-8 ${style?.border} bg-opacity-100`}
                 >
                     <div className="absolute right-4 top-4 z-10">
                         <button

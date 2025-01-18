@@ -37,7 +37,7 @@ export default function Banner() {
                 <br />
                 <div className="flex h-fit items-center justify-center py-4 text-3xl sm:text-5xl">
                     <motion.div
-                        className="pr-4"
+                        className="py-2 pr-4"
                         initial={{ opacity: 0, scale: 1, y: 50 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{
@@ -62,7 +62,7 @@ export default function Banner() {
                                 style={{ transformOrigin: "left" }}
                             ></motion.div>
                             <motion.span
-                                className="relative"
+                                className="relative py-2"
                                 initial={{ opacity: 0, scale: 0.8, y: 50 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 transition={{
