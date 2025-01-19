@@ -5,9 +5,10 @@ import { Rwdot } from "rwdot";
 import "./globals.css";
 
 const genSenB = localFont({
-    src: "./fonts/GenSenRounded2TW-B.otf",
+    src: "./fonts/GenSenRounded2TW-B.woff2",
     variable: "--font-gensenb",
     preload: true,
+    display: "swap",
 });
 
 export const metadata: Metadata = {
