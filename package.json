@@ -10,14 +10,20 @@
         "format": "prettier --write ."
     },
     "dependencies": {
+        "@radix-ui/react-slot": "^1.1.1",
         "@vercel/analytics": "^1.4.1",
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
         "dynamic-dock": "^1.0.0",
+        "embla-carousel-react": "^8.5.2",
         "framer-motion": "^11.14.4",
-        "lucide-react": "^0.468.0",
+        "lucide-react": "^0.473.0",
         "next": "15.1.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
-        "rwdot": "^0.0.5"
+        "rwdot": "^0.0.5",
+        "tailwind-merge": "^2.6.0",
+        "tailwindcss-animate": "^1.0.7"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",

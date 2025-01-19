@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="sm:text-md flex items-center justify-center pb-8 pt-2 font-gensenb text-sm text-white-black-900">
+        <footer className="xs:text-lg flex h-screen items-center justify-center font-gensenb text-sm tracking-wider text-white-black-900">
             <h2>
                 © {new Date().getFullYear()} Yen Cheng Lin. All rights reserved
             </h2>
