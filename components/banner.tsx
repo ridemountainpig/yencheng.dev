@@ -1,30 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { CircleArrowRight, ArrowUp } from "lucide-react";
+import { useCarousel } from "@/components/ui/carousel";
 
 export default function Banner() {
-    const [isVisible, setIsVisible] = useState(true);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setIsVisible(false);
-            } else {
-                setIsVisible(true);
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
+    const { scrollNext } = useCarousel();
 
     return (
         <div className="flex h-[90vh] w-full select-none items-center justify-center font-gensenb tracking-wider text-white-black-900">
-            <div className="w-full text-center">
+            <div className="-mt-8 w-full text-center">
                 <h2 className="hidden">Hello, I&apos;m Yen Cheng Lin</h2>
                 <motion.div
                     className="text-4xl sm:text-6xl"
@@ -77,21 +62,53 @@ export default function Banner() {
                     </div>
                 </div>
             </div>
-            {isVisible && (
-                <motion.div
-                    className="absolute bottom-8 flex w-full justify-center"
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={{
-                        opacity: isVisible ? 1 : 0,
-                        y: isVisible ? 0 : 20,
-                    }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
+            <motion.div
+                className="absolute bottom-[5.5rem] flex w-full justify-center"
+                initial={{ opacity: 1, y: 130 }}
+                animate={{
+                    y: 0,
+                }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 1.15 }}
+            >
+                <div
+                    className="flex h-10 w-fit cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white-brown-500 px-4 text-sm text-white-brown-800 sm:text-xl"
+                    onClick={scrollNext}
                 >
-                    <div className="flex h-10 w-fit animate-bounce items-center justify-center rounded-full bg-white-brown-500 px-4 text-white-brown-800">
-                        <span>About Me</span>
-                    </div>
-                </motion.div>
-            )}
+                    <span>About Me</span>
+                    <CircleArrowRight
+                        strokeWidth={2.25}
+                        size={24}
+                        className="hidden sm:block"
+                    />
+                    <CircleArrowRight
+                        strokeWidth={2.25}
+                        size={20}
+                        className="sm:hidden"
+                    />
+                </div>
+            </motion.div>
+            <motion.div
+                className="absolute bottom-5 flex w-full justify-center"
+                initial={{ opacity: 1, y: 130 }}
+                animate={{
+                    y: 0,
+                }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 1.15 }}
+            >
+                <div className="sm:text-md flex h-fit w-fit animate-bounce flex-col items-center justify-center text-sm text-white-black-900">
+                    <ArrowUp
+                        strokeWidth={3.5}
+                        size={20}
+                        className="hidden sm:block"
+                    />
+                    <ArrowUp
+                        strokeWidth={3.5}
+                        size={16}
+                        className="sm:hidden"
+                    />
+                    <span>Click</span>
+                </div>
+            </motion.div>
         </div>
     );
 }
