@@ -12,7 +12,7 @@ export default function Title({
     bgColor = "bg-white-brown-600",
 }: TitleProps) {
     return (
-        <div className="relative inline-block overflow-hidden">
+        <div className="relative inline-block select-none overflow-hidden">
             <motion.span
                 className={`absolute bottom-1 left-0 h-4 w-full ${bgColor} opacity-90`}
                 initial={{ scaleX: 0 }}
