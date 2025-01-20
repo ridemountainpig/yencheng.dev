@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head";
 import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -54,6 +55,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <Head>
+                <meta
+                    name="google-site-verification"
+                    content="UmkdCtHuAz2VyuxgE8Th1jTiDJQccNGUEBivQ8d96Vc"
+                />
+            </Head>
             <body
                 className={`${genSenB.variable} bg-white-black-50 antialiased`}
             >
