@@ -168,7 +168,7 @@ export default function Dock() {
                 />
             </div>
 
-            <div className="group absolute bottom-0 left-1/2 flex h-[4rem] w-[88%] -translate-x-1/2 transform items-center justify-center rounded-[1.25rem] bg-white-brown-600 bg-opacity-50 p-2 sm:bottom-2 sm:w-fit sm:rounded-2xl sm:bg-menubar sm:bg-opacity-40 sm:p-3">
+            <div className="group absolute bottom-2 left-1/2 flex h-[4rem] w-[88%] -translate-x-1/2 transform items-center justify-center rounded-[1.25rem] bg-white-brown-600 bg-opacity-50 p-2 sm:bottom-2 sm:w-fit sm:rounded-2xl sm:bg-menubar sm:bg-opacity-40 sm:p-3">
                 <div className="flex h-full items-center gap-x-2 sm:gap-x-3 md:group-hover:hidden">
                     {dockItems.map((item, index) => (
                         <DockItemButton

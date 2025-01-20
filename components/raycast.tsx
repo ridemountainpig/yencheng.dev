@@ -3,7 +3,7 @@ import {
     getRaycastExtensions,
     getRaycastContributionExtensions,
 } from "@/utils/raycast";
-import Title from "@/components/title";
+import PageTitle from "@/components/page-title";
 import RaycastExtensions from "@/components/raycast/raycast-extensions";
 
 export default async function Raycast() {
@@ -11,11 +11,9 @@ export default async function Raycast() {
     const contributionExtensions = await getRaycastContributionExtensions();
 
     return (
-        <div className="w-full bg-white-black-50 pt-6 text-white-black-900">
-            <div className="flex justify-center">
-                <Title title="My Raycast Extensions"></Title>
-            </div>
-            <div className="flex w-full items-center justify-center py-10 md:h-[90vh] md:py-0">
+        <div className="h-full w-full bg-white-black-50 pt-6 text-white-black-900">
+            <PageTitle title="My Raycast Extensions"></PageTitle>
+            <div className="-mt-6 flex h-full w-full items-center justify-center px-1">
                 <div className="h-[472px] w-[96%] select-none rounded-2xl border-[1px] border-white-brown-600 bg-white-brown-500 font-gensenb text-white-black-900 shadow-lg shadow-white-black-200 md:w-[750px]">
                     <div className="h-[55px] border-b-[1px] border-white-brown-600 border-opacity-70 p-[18px]">
                         <span className="tracking-wider">
