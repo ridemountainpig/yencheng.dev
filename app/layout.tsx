@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import { Rwdot } from "rwdot";
 import "./globals.css";
@@ -56,6 +57,7 @@ export default function RootLayout({
             <body
                 className={`${genSenB.variable} bg-white-black-50 antialiased`}
             >
+                <GoogleAnalytics gaId="G-D5P23L59BL" />
                 <Analytics />
                 <Rwdot
                     position="bottom-right"
