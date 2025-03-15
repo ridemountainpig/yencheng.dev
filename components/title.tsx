@@ -12,7 +12,7 @@ export default function Title({
     bgColor = "bg-white-brown-600",
 }: TitleProps) {
     return (
-        <div className="relative inline-block select-none overflow-hidden">
+        <div className="relative inline-block overflow-hidden select-none">
             <motion.span
                 className={`absolute bottom-1 left-0 h-4 w-full ${bgColor} opacity-90`}
                 initial={{ scaleX: 0 }}
@@ -20,7 +20,7 @@ export default function Title({
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 style={{ transformOrigin: "left" }}
             ></motion.span>
-            <span className="relative font-gensenb text-2xl sm:text-3xl">
+            <span className="font-gensenb relative text-2xl sm:text-3xl">
                 {title}
             </span>
         </div>

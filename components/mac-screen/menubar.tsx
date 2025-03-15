@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 
 export default function Menubar() {
     const [dateInfo, setDateInfo] = useState("");
@@ -30,17 +29,17 @@ export default function Menubar() {
     ];
 
     return (
-        <div className="flex w-full select-none justify-between p-3">
-            <div className="group relative whitespace-nowrap rounded-xl bg-menubar bg-opacity-40 p-2 px-2.5">
-                <Image
-                    className="rounded-sm hover:bg-opacity-30"
+        <div className="flex w-full justify-between p-3 select-none">
+            <div className="group bg-menubar/40 relative rounded-xl p-2 px-2.5 whitespace-nowrap">
+                <img
+                    className="hover:bg-menubar/30 rounded-sm"
                     src="/yencheng.png"
                     height={22}
                     width={22}
                     alt="personal icon"
                 />
-                <div className="absolute left-0 top-12 hidden group-hover:block">
-                    <div className="rounded-xl bg-menubar bg-opacity-40 p-2 font-gensenb text-xs tracking-wide text-white-black-900">
+                <div className="absolute top-12 left-0 hidden group-hover:block">
+                    <div className="bg-menubar/40 font-gensenb text-white-black-900 rounded-xl p-2 text-xs tracking-wide">
                         {infoItems.map((item, index) => (
                             <div key={index}>
                                 <div className="flex items-center gap-2 px-2 py-2">
@@ -53,7 +52,7 @@ export default function Menubar() {
                 </div>
             </div>
 
-            <div className="flex items-center justify-center rounded-xl bg-white-black-200 bg-opacity-40 p-2 px-3 font-gensenb text-xs text-white">
+            <div className="bg-white-black-200/40 font-gensenb flex items-center justify-center rounded-xl p-2 px-3 text-xs text-white">
                 <span>{dateInfo}</span>
             </div>
         </div>

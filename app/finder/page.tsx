@@ -21,7 +21,7 @@ export default function Finder() {
     ];
 
     return (
-        <div className="flex max-h-fit min-h-screen w-full items-center justify-center bg-white font-gensenb tracking-wider text-white-black-900">
+        <div className="font-gensenb text-white-black-900 flex max-h-fit min-h-screen w-full items-center justify-center bg-white tracking-wider">
             <div className="w-[90%] max-w-xl bg-white pt-6 text-left sm:w-[80%] sm:pt-12">
                 <div className="pb-6">
                     <h2 className="text-xl">Hi, i&apos;m Yen Cheng</h2>

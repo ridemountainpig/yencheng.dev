@@ -8,7 +8,7 @@ export default function Banner() {
     const { scrollNext } = useCarousel();
 
     return (
-        <div className="flex h-[90vh] w-full select-none items-center justify-center font-gensenb tracking-wider text-white-black-900">
+        <div className="font-gensenb text-white-black-900 flex h-[90vh] w-full items-center justify-center tracking-wider select-none">
             <div className="-mt-8 w-full text-center">
                 <h2 className="hidden">Hello, I&apos;m Yen Cheng Lin</h2>
                 <motion.div
@@ -36,7 +36,7 @@ export default function Banner() {
                     <div>
                         <div className="relative inline-block">
                             <motion.div
-                                className="absolute bottom-1 left-0 h-6 w-full bg-white-brown-600 opacity-90"
+                                className="bg-white-brown-600 absolute bottom-1 left-0 h-6 w-full opacity-90"
                                 initial={{ scaleX: 0 }}
                                 animate={{ scaleX: 1 }}
                                 transition={{
@@ -71,7 +71,7 @@ export default function Banner() {
                 transition={{ duration: 0.6, ease: "easeOut", delay: 1.15 }}
             >
                 <div
-                    className="flex h-10 w-fit cursor-pointer items-center justify-center gap-x-2 rounded-full bg-white-brown-500 px-4 text-sm text-white-brown-800 sm:text-xl"
+                    className="bg-white-brown-500 text-white-brown-800 flex h-10 w-fit cursor-pointer items-center justify-center gap-x-2 rounded-full px-4 text-sm sm:text-xl"
                     onClick={scrollNext}
                 >
                     <span>About Me</span>
@@ -95,7 +95,7 @@ export default function Banner() {
                 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 1.15 }}
             >
-                <div className="sm:text-md flex h-fit w-fit animate-bounce flex-col items-center justify-center text-sm text-white-black-900">
+                <div className="sm:text-md text-white-black-900 flex h-fit w-fit animate-bounce flex-col items-center justify-center text-sm">
                     <ArrowUp
                         strokeWidth={3.5}
                         size={20}

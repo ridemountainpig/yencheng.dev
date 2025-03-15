@@ -4,13 +4,13 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 export default function Header() {
     return (
         <header className="flex h-fit items-center justify-between px-2 py-6 sm:px-6">
-            <h1 className="text-md rounded-xl bg-white-brown-500 p-2 px-3 font-gensenb text-white-brown-800 sm:text-2xl">
+            <h1 className="text-md bg-white-brown-500 font-gensenb text-white-brown-800 rounded-xl p-2 px-3 sm:text-2xl">
                 Yen Cheng Lin
             </h1>
-            <div className="flex h-fit items-center gap-x-2 text-white-black-900">
+            <div className="text-white-black-900 flex h-fit items-center gap-x-2">
                 <Link
                     href="https://github.com/ridemountainpig"
-                    className="rounded-xl bg-white-brown-500 p-2 text-white-brown-800"
+                    className="bg-white-brown-500 text-white-brown-800 rounded-xl p-2"
                 >
                     <Github
                         size={30}
@@ -25,7 +25,7 @@ export default function Header() {
                 </Link>
                 <Link
                     href="https://www.linkedin.com/in/%E5%BD%A5%E6%88%90-%E6%9E%97-22948823a/"
-                    className="rounded-xl bg-white-brown-500 p-2 text-white-brown-800"
+                    className="bg-white-brown-500 text-white-brown-800 rounded-xl p-2"
                 >
                     <Linkedin
                         size={30}
@@ -40,7 +40,7 @@ export default function Header() {
                 </Link>
                 <Link
                     href="https://x.com/ridemountainpig"
-                    className="rounded-xl bg-white-brown-500 p-2 text-white-brown-800"
+                    className="bg-white-brown-500 text-white-brown-800 rounded-xl p-2"
                 >
                     <Twitter
                         size={30}

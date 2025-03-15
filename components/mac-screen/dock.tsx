@@ -27,8 +27,9 @@ export default function Dock() {
             picture: item.info?.picture || [],
             style: item.info?.style || {
                 border: item.info?.style?.border || "border-brown-400",
-                bg: item.info?.style?.bg || "bg-white-brown-400",
-                secondBg: item.info?.style?.secondBg || "bg-white-brown-600",
+                bg: item.info?.style?.bg || "bg-white-brown-400/100",
+                secondBg:
+                    item.info?.style?.secondBg || "bg-white-brown-600/100",
                 icon: item.info?.style?.icon || "text-white-brown-600",
             },
         });
@@ -57,7 +58,7 @@ export default function Dock() {
         {
             src: "/dock/finder.png",
             alt: "finder icon",
-            className: "rounded-xl",
+            className: "rounded-xl cursor-pointer",
             label: "Finder",
             url: "/finder",
             showInfo: false,
@@ -66,7 +67,7 @@ export default function Dock() {
         {
             src: "/dock/github.png",
             alt: "github icon",
-            className: "rounded-xl",
+            className: "rounded-xl cursor-pointer",
             label: "My GitHub",
             url: "https://github.com/ridemountainpig",
             showInfo: false,
@@ -75,7 +76,7 @@ export default function Dock() {
         {
             src: "/dock/coffee-diary.png",
             alt: "coffee diary icon",
-            className: "rounded-xl bg-[#FAF9F2]",
+            className: "rounded-xl bg-[#FAF9F2] cursor-pointer",
             label: "Coffee Diary",
             url: "https://www.coffee-diary.com/",
             showInfo: true,
@@ -106,7 +107,7 @@ export default function Dock() {
         {
             src: "/dock/hue.png",
             alt: "hue icon",
-            className: "rounded-xl bg-white",
+            className: "rounded-xl bg-white cursor-pointer",
             label: "Hue Palette",
             url: "https://www.hue-palette.com/",
             showInfo: true,
@@ -137,7 +138,7 @@ export default function Dock() {
         {
             src: "/dock/monkeytype-readme.png",
             alt: "monkeytype readme icon",
-            className: "rounded-xl bg-white p-1.5",
+            className: "rounded-xl bg-white p-1.5 cursor-pointer",
             label: "Monkeytype Readme",
             url: "https://monkeytype-readme.com/",
             showInfo: false,
@@ -146,7 +147,7 @@ export default function Dock() {
         {
             src: "/dock/svgl.png",
             alt: "svgl icon",
-            className: "rounded-xl",
+            className: "rounded-xl cursor-pointer",
             label: "SVGL Badge",
             url: "https://svgl-badge.vercel.app/",
             showInfo: false,
@@ -168,13 +169,12 @@ export default function Dock() {
                 />
             </div>
 
-            <div className="group absolute bottom-2 left-1/2 flex h-[4rem] w-[88%] -translate-x-1/2 transform items-center justify-center rounded-[1.25rem] bg-white-brown-600 bg-opacity-50 p-2 sm:bottom-2 sm:w-fit sm:rounded-2xl sm:bg-menubar sm:bg-opacity-40 sm:p-3">
+            <div className="group bg-white-brown-600/50 sm:bg-menubar/40 absolute bottom-2 left-1/2 flex h-[4rem] w-[88%] -translate-x-1/2 transform items-center justify-center rounded-[1.25rem] p-2 sm:bottom-2 sm:w-fit sm:rounded-2xl sm:p-3">
                 <div className="flex h-full items-center gap-x-2 sm:gap-x-3 md:group-hover:hidden">
-                    {dockItems.map((item, index) => (
+                    {dockItems.map((item) => (
                         <DockItemButton
                             key={item.url}
                             item={item}
-                            index={index}
                             onClick={handleItemClick}
                         />
                     ))}
@@ -182,11 +182,10 @@ export default function Dock() {
 
                 <div className="hidden md:group-hover:block">
                     <DynamicDock gapX={10} imageWidth={50}>
-                        {dockItems.map((item, index) => (
+                        {dockItems.map((item) => (
                             <DockItemButton
                                 key={item.url}
                                 item={item}
-                                index={index}
                                 onClick={handleItemClick}
                             />
                         ))}

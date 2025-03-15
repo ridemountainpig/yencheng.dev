@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Extension } from "@/types/type";
 
 interface RaycastItemProps {
@@ -10,18 +9,18 @@ export default function RaycastExtItem({ extension, index }: RaycastItemProps) {
     return (
         <a
             key={index}
-            className="flex h-[40px] items-center rounded-lg bg-white-brown-500 px-2.5 hover:bg-white-brown-600 hover:bg-opacity-60"
+            className="bg-white-brown-500 hover:bg-white-brown-600/60 flex h-[40px] items-center rounded-lg px-2.5"
             href={extension.store_url}
             target="_blank"
         >
-            <Image
+            <img
                 src={extension.icons.light ?? ""}
                 height={20}
                 width={20}
                 alt={extension.title}
             />
             <span className="ml-3 text-sm">{extension.title}</span>
-            <span className="ml-3 hidden text-sm text-white-black-700 md:block">
+            <span className="text-white-black-700 ml-3 hidden text-sm md:block">
                 {extension.description.length > 45
                     ? extension.description.slice(0, 45) + "..."
                     : extension.description}

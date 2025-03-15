@@ -39,9 +39,7 @@ export default function Info({
 
             <div className={`text-md px-6 pb-6 lg:text-lg ${style.bg}`}>
                 <SecondTitle title="Tech" bgColor={style.secondBg} />
-                <div
-                    className={`mt-4 rounded-xl ${style.secondBg} bg-opacity-50`}
-                >
+                <div className={`mt-4 rounded-xl ${style.secondBg}/50`}>
                     <ul className="p-3">
                         {tech.split("\n").map((item, index) => (
                             <li key={index} className="py-1">
