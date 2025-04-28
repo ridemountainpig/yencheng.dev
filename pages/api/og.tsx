@@ -6,7 +6,7 @@ export const config = {
 
 export default async function og() {
     const fontData = await fetch(
-        new URL("../../asset/gensenb.ttf", import.meta.url),
+        new URL("https://yencheng.dev/font/gensenb.ttf", import.meta.url),
     ).then((res) => res.arrayBuffer());
 
     return new ImageResponse(
