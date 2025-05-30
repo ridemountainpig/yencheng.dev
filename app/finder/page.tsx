@@ -3,6 +3,14 @@ import { MapPin, Briefcase, FileUser, HardDriveDownload } from "lucide-react";
 export default function Finder() {
     const experience = [
         {
+            title: "imCloud",
+            titleLink: "https://imcloud.co/",
+            jobTitle: "Frontend Engineer",
+            date: "2025/02 - Present",
+            description:
+                "Develop the frontend of a Prognostics and Health Management (PHM) system for fault prediction and health monitoring using Next.js.",
+        },
+        {
             title: "Systex",
             titleLink: "https://tw.systex.com/en/",
             jobTitle: "Software Engineer Intern",
