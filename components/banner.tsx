@@ -8,7 +8,7 @@ export default function Banner() {
     const { scrollNext } = useCarousel();
 
     return (
-        <div className="font-gensenb text-white-black-900 flex h-[90vh] w-full items-center justify-center tracking-wider select-none">
+        <div className="font-nunito text-white-black-900 flex h-[90vh] w-full items-center justify-center tracking-wider select-none">
             <div className="-mt-8 w-full text-center">
                 <h2 className="hidden">Hello, I&apos;m Yen Cheng Lin</h2>
                 <motion.div

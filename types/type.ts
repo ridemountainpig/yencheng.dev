@@ -21,6 +21,7 @@ export interface InfoStyle {
     bg: string;
     secondBg: string;
     icon: string;
+    text: string;
 }
 
 // Raycast Extension types

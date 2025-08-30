@@ -6,9 +6,9 @@ import { Analytics } from "@vercel/analytics/react";
 import { Rwdot } from "rwdot";
 import "./globals.css";
 
-const genSenB = localFont({
-    src: "./fonts/GenSenRounded2TW-B.woff2",
-    variable: "--font-gensenb",
+const nunito = localFont({
+    src: "./fonts/NunitoBold.woff2",
+    variable: "--font-nunito",
     preload: true,
     display: "swap",
 });
@@ -62,7 +62,7 @@ export default function RootLayout({
                 />
             </Head>
             <body
-                className={`${genSenB.variable} bg-white-black-50 antialiased`}
+                className={`${nunito.variable} bg-white-black-50 antialiased`}
             >
                 <GoogleAnalytics gaId="G-D5P23L59BL" />
                 <Analytics />

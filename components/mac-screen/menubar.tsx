@@ -39,7 +39,7 @@ export default function Menubar() {
                     alt="personal icon"
                 />
                 <div className="absolute top-12 left-0 hidden group-hover:block">
-                    <div className="bg-menubar/40 font-gensenb text-white-black-900 rounded-xl p-2 text-xs tracking-wide">
+                    <div className="bg-menubar/40 font-nunito text-white-black-900 rounded-xl p-2 text-xs tracking-wide">
                         {infoItems.map((item, index) => (
                             <div key={index}>
                                 <div className="flex items-center gap-2 px-2 py-2">
@@ -52,7 +52,7 @@ export default function Menubar() {
                 </div>
             </div>
 
-            <div className="bg-white-black-200/40 font-gensenb flex items-center justify-center rounded-xl p-2 px-3 text-xs text-white">
+            <div className="bg-white-black-200/40 font-nunito flex items-center justify-center rounded-xl p-2 px-3 text-xs text-white">
                 <span>{dateInfo}</span>
             </div>
         </div>

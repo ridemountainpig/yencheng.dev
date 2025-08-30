@@ -22,7 +22,7 @@ export default function Info({
 }: InfoProps) {
     return (
         <div
-            className={`relative h-full w-full ${style.bg} font-gensenb text-white-black-900`}
+            className={`font-nunito relative h-full w-full ${style.bg} ${style.text}`}
         >
             <div className="flex justify-center py-4">
                 <Title title={title} bgColor={style.secondBg} />
@@ -39,7 +39,7 @@ export default function Info({
 
             <div className={`text-md px-6 pb-6 lg:text-lg ${style.bg}`}>
                 <SecondTitle title="Tech" bgColor={style.secondBg} />
-                <div className={`mt-4 rounded-xl ${style.secondBg}/50`}>
+                <div className={`mt-4 rounded-xl ${style.secondBg}`}>
                     <ul className="p-3">
                         {tech.split("\n").map((item, index) => (
                             <li key={index} className="py-1">

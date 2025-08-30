@@ -13,7 +13,7 @@ export default async function Raycast() {
         <div className="bg-white-black-50 text-white-black-900 h-full w-full pt-6">
             <PageTitle title="My Raycast Extensions"></PageTitle>
             <div className="-mt-6 flex h-full w-full items-center justify-center px-1">
-                <div className="border-white-brown-600 bg-white-brown-500 font-gensenb text-white-black-900 shadow-white-black-200 h-[472px] w-[96%] rounded-2xl border-[1px] shadow-lg select-none md:w-[750px]">
+                <div className="border-white-brown-600 bg-white-brown-500 font-nunito text-white-black-900 shadow-white-black-200 h-[472px] w-[96%] rounded-2xl border-[1px] shadow-lg select-none md:w-[750px]">
                     <div className="border-white-brown-600/70 h-[55px] border-b-[1px] p-[18px]">
                         <span className="tracking-wider">
                             Yen Cheng Raycast Extensions...

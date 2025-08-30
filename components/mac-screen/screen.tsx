@@ -102,6 +102,7 @@ export default function Screen({
                                 bg: "bg-white-brown-400",
                                 secondBg: "bg-white-brown-600",
                                 icon: "text-white-brown-600",
+                                text: "text-white-black-900",
                             }
                         }
                     />

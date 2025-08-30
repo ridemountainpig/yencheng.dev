@@ -6,7 +6,7 @@ export const config = {
 
 export default async function og() {
     const fontData = await fetch(
-        new URL("https://yencheng.dev/font/gensenb.ttf", import.meta.url),
+        new URL("https://yencheng.dev/font/NunitoBold.ttf", import.meta.url),
     ).then((res) => res.arrayBuffer());
 
     return new ImageResponse(
@@ -22,12 +22,12 @@ export default async function og() {
                     background: "white",
                 }}
             >
-                <div tw="w-full flex flex-col items-center text-center font-gensenb tracking-widest text-[#1a1a1a] text-8xl">
+                <div tw="w-full flex flex-col items-center text-center font-nunito tracking-widest text-[#1a1a1a] text-8xl">
                     <div>Hello</div>
                     <div tw="flex h-fit items-center justify-center pt-12">
                         <div tw="pr-6">I&apos;m</div>
                         <div tw="relative flex">
-                            <div tw="absolute -bottom-7 left-0 h-16 w-full bg-[#f2e9e3] opacity-90" />
+                            <div tw="absolute -bottom-2 left-0 h-16 w-full bg-[#f2e9e3] opacity-90" />
                             <div tw="relative flex items-center px-4">
                                 Yen Cheng Lin
                             </div>
@@ -41,7 +41,7 @@ export default async function og() {
             height: 630,
             fonts: [
                 {
-                    name: "gensenb",
+                    name: "nunito",
                     data: fontData,
                     style: "normal",
                 },

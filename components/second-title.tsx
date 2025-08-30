@@ -20,7 +20,7 @@ export default function SecondTitle({
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 style={{ transformOrigin: "left" }}
             ></motion.span>
-            <span className="font-gensenb relative text-xl md:text-2xl">
+            <span className="font-nunito relative text-xl md:text-2xl">
                 {title}
             </span>
         </div>

@@ -31,6 +31,7 @@ export default function Dock() {
                 secondBg:
                     item.info?.style?.secondBg || "bg-white-brown-600/100",
                 icon: item.info?.style?.icon || "text-white-brown-600",
+                text: item.info?.style?.text || "text-white-black-900",
             },
         });
     }, []);
@@ -48,6 +49,7 @@ export default function Dock() {
                 bg: "",
                 secondBg: "",
                 icon: "",
+                text: "",
             },
         };
 
@@ -72,6 +74,42 @@ export default function Dock() {
             url: "https://github.com/ridemountainpig",
             showInfo: false,
             link: true,
+        },
+        {
+            src: "/dock/subflow.png",
+            alt: "subflow icon",
+            className: "rounded-xl cursor-pointer",
+            label: "Subflow",
+            url: "https://subflow.ing/",
+            showInfo: true,
+            link: false,
+            info: {
+                title: "Subflow",
+                description:
+                    "Easily flow through your subscriptions with Subflow. Track spending, organize recurring payments, and take control of your subscription management. Whether it’s Netflix, Spotify, or any other recurring expenses, Subflow keeps everything organized in one place.",
+                tech: "TypeScript, Next.js, Tailwind CSS, MongoDB, Clerk",
+                picture: [
+                    {
+                        src: "/subflow/1.png",
+                        description: "",
+                    },
+                    {
+                        src: "/subflow/2.png",
+                        description: "",
+                    },
+                    {
+                        src: "/subflow/3.png",
+                        description: "",
+                    },
+                ],
+                style: {
+                    border: "border-[#faf0e6]",
+                    bg: "bg-[#514f50]",
+                    secondBg: "bg-[#27272a95]",
+                    icon: "text-[#faf0e6]",
+                    text: "text-[#faf0e6]",
+                },
+            },
         },
         {
             src: "/dock/coffee-diary.png",
@@ -99,8 +137,9 @@ export default function Dock() {
                 style: {
                     border: "border-white-brown-600",
                     bg: "bg-white-brown-400",
-                    secondBg: "bg-white-brown-600",
+                    secondBg: "bg-white-brown-600/50",
                     icon: "text-white-brown-600",
+                    text: "text-white-black-900",
                 },
             },
         },
@@ -130,8 +169,9 @@ export default function Dock() {
                 style: {
                     border: "border-slate-400",
                     bg: "bg-white",
-                    secondBg: "bg-slate-300",
+                    secondBg: "bg-slate-300/50",
                     icon: "text-slate-300",
+                    text: "text-white-black-900",
                 },
             },
         },
@@ -141,15 +181,6 @@ export default function Dock() {
             className: "rounded-xl bg-white p-1.5 cursor-pointer",
             label: "Monkeytype Readme",
             url: "https://monkeytype-readme.com/",
-            showInfo: false,
-            link: false,
-        },
-        {
-            src: "/dock/svgl.png",
-            alt: "svgl icon",
-            className: "rounded-xl cursor-pointer",
-            label: "SVGL Badge",
-            url: "https://svgl-badge.vercel.app/",
             showInfo: false,
             link: false,
         },
