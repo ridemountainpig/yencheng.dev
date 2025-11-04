@@ -14,6 +14,7 @@ const nunito = localFont({
 });
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://yencheng.dev"),
     title: "Yen Cheng Lin",
     description: "The personal website of Yen Cheng Lin.",
     keywords: ["Yen Cheng Lin", "Yen Cheng", "Ridemountainpig", "林彥成"],
