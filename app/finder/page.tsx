@@ -6,7 +6,7 @@ export default function Finder() {
             title: "imCloud",
             titleLink: "https://imcloud.co/",
             jobTitle: "Frontend Engineer",
-            date: "2025/02 - Present",
+            date: "2025/02 - 2025/09",
             description:
                 "Develop the frontend of a Prognostics and Health Management (PHM) system for fault prediction and health monitoring using Next.js.",
         },
