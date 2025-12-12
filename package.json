@@ -1,44 +1,44 @@
 {
-    "name": "yencheng.dev",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint",
-        "format": "prettier --write ."
-    },
-    "dependencies": {
-        "@next/third-parties": "^16.0.0",
-        "@radix-ui/react-slot": "^1.1.1",
-        "@vercel/analytics": "^1.4.1",
-        "@vercel/og": "^0.6.8",
-        "class-variance-authority": "^0.7.1",
-        "clsx": "^2.1.1",
-        "dynamic-dock": "^1.0.0",
-        "embla-carousel-react": "^8.5.2",
-        "framer-motion": "^11.14.4",
-        "lucide-react": "^0.536.0",
-        "next": "^16.0.0",
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0",
-        "rwdot": "^0.0.5",
-        "tailwind-merge": "^2.6.0",
-        "tailwindcss-animate": "^1.0.7"
-    },
-    "devDependencies": {
-        "@eslint/eslintrc": "^3",
-        "@tailwindcss/postcss": "^4.0.13",
-        "@types/node": "^20",
-        "@types/react": "^19",
-        "@types/react-dom": "^19",
-        "eslint": "^9",
-        "eslint-config-next": "^16.0.0",
-        "postcss": "^8",
-        "prettier": "^3.4.2",
-        "prettier-plugin-tailwindcss": "^0.6.11",
-        "tailwindcss": "^4.0.13",
-        "typescript": "^5"
-    }
+  "name": "yencheng.dev",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@next/third-parties": "^16.0.0",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@vercel/analytics": "^1.4.1",
+    "@vercel/og": "^0.6.8",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dynamic-dock": "^1.0.0",
+    "embla-carousel-react": "^8.5.2",
+    "framer-motion": "^11.14.4",
+    "lucide-react": "^0.536.0",
+    "next": "16.0.10",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rwdot": "^0.0.5",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.0.13",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^16.0.0",
+    "postcss": "^8",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.0.13",
+    "typescript": "^5"
+  }
 }
