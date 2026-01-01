@@ -5,8 +5,11 @@ import DynamicDock from "dynamic-dock";
 import { DockItem, InfoStyle } from "@/types/type";
 import Screen from "@/components/mac-screen/screen";
 import DockItemButton from "@/components/mac-screen/dockItemButton";
+import { useCarousel } from "@/components/ui/carousel";
 
 export default function Dock() {
+    const { scrollNext } = useCarousel();
+
     const [screenState, setScreenState] = useState({
         url: "/finder",
         showInfo: false,
@@ -17,24 +20,32 @@ export default function Dock() {
         style: {} as InfoStyle,
     });
 
-    const handleItemClick = useCallback((item: DockItem) => {
-        setScreenState({
-            url: item.url,
-            showInfo: item.showInfo,
-            title: item.info?.title || "",
-            description: item.info?.description || "",
-            tech: item.info?.tech || "",
-            picture: item.info?.picture || [],
-            style: item.info?.style || {
-                border: item.info?.style?.border || "border-brown-400",
-                bg: item.info?.style?.bg || "bg-white-brown-400/100",
-                secondBg:
-                    item.info?.style?.secondBg || "bg-white-brown-600/100",
-                icon: item.info?.style?.icon || "text-white-brown-600",
-                text: item.info?.style?.text || "text-white-black-900",
-            },
-        });
-    }, []);
+    const handleItemClick = useCallback(
+        (item: DockItem) => {
+            if (item.label === "My Raycast") {
+                scrollNext();
+                return;
+            }
+
+            setScreenState({
+                url: item.url,
+                showInfo: item.showInfo,
+                title: item.info?.title || "",
+                description: item.info?.description || "",
+                tech: item.info?.tech || "",
+                picture: item.info?.picture || [],
+                style: item.info?.style || {
+                    border: item.info?.style?.border || "border-brown-400",
+                    bg: item.info?.style?.bg || "bg-white-brown-400/100",
+                    secondBg:
+                        item.info?.style?.secondBg || "bg-white-brown-600/100",
+                    icon: item.info?.style?.icon || "text-white-brown-600",
+                    text: item.info?.style?.text || "text-white-black-900",
+                },
+            });
+        },
+        [scrollNext],
+    );
 
     useEffect(() => {
         const initialData = {
@@ -76,13 +87,22 @@ export default function Dock() {
             link: true,
         },
         {
+            src: "/dock/raycast.png",
+            alt: "raycast icon",
+            className: "rounded-xl cursor-pointer",
+            label: "My Raycast",
+            url: "",
+            showInfo: false,
+            link: false,
+        },
+        {
             src: "/dock/subflow.png",
             alt: "subflow icon",
             className: "rounded-xl cursor-pointer",
             label: "Subflow",
             url: "https://subflow.ing/",
             showInfo: true,
-            link: false,
+            link: true,
             info: {
                 title: "Subflow",
                 description:
@@ -188,7 +208,7 @@ export default function Dock() {
 
     return (
         <>
-            <div className="absolute bottom-[5rem] left-1/2 flex h-[86%] w-full -translate-x-1/2 transform sm:w-[95%]">
+            <div className="absolute bottom-20 left-1/2 flex h-[86%] w-full -translate-x-1/2 transform sm:w-[95%]">
                 <Screen
                     url={screenState.url}
                     infoShow={screenState.showInfo}
@@ -200,7 +220,7 @@ export default function Dock() {
                 />
             </div>
 
-            <div className="group bg-white-brown-600/50 sm:bg-menubar/40 absolute bottom-2 left-1/2 flex h-[4rem] w-[88%] -translate-x-1/2 transform items-center justify-center rounded-[1.25rem] p-2 sm:bottom-2 sm:w-fit sm:rounded-2xl sm:p-3">
+            <div className="group bg-white-brown-600/50 sm:bg-menubar/40 absolute bottom-2 left-1/2 flex h-16 w-[88%] -translate-x-1/2 transform items-center justify-center rounded-[1.25rem] p-2 sm:bottom-2 sm:w-fit sm:rounded-2xl sm:p-3">
                 <div className="flex h-full items-center gap-x-2 sm:gap-x-3 md:group-hover:hidden">
                     {dockItems.map((item) => (
                         <DockItemButton

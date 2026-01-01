@@ -63,7 +63,7 @@ export default function Banner() {
                 </div>
             </div>
             <motion.div
-                className="absolute bottom-[5.5rem] flex w-full justify-center"
+                className="absolute bottom-22 flex w-full justify-center"
                 initial={{ opacity: 1, y: 130 }}
                 animate={{
                     y: 0,

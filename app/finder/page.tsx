@@ -32,7 +32,12 @@ export default function Finder() {
         <div className="font-nunito text-white-black-900 flex max-h-fit min-h-screen w-full items-center justify-center bg-white tracking-wider">
             <div className="w-[90%] max-w-xl bg-white pt-6 text-left sm:w-[80%] sm:pt-12">
                 <div className="pb-6">
-                    <h2 className="text-xl">Hi, i&apos;m Yen Cheng</h2>
+                    <img
+                        src="/finder/avatar.png"
+                        alt="My Avatar"
+                        className="w-20 rounded-full md:w-30"
+                    />
+                    <h2 className="mt-4 text-xl">Hi, i&apos;m Yen Cheng</h2>
                     <div className="mt-4 flex h-fit items-center">
                         <MapPin size={18} />
                         <span className="pl-2 text-xs sm:text-sm">
@@ -46,7 +51,7 @@ export default function Finder() {
                         </span>
                     </div>
                     <a
-                        className="mt-4 flex h-fit items-center"
+                        className="mt-4 flex h-fit items-center gap-x-2"
                         href="/finder/resume.pdf"
                         target="_blank"
                         rel="noreferrer"
