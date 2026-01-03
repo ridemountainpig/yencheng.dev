@@ -2,6 +2,7 @@ import {
     getRaycastExtensions,
     getRaycastContributionExtensions,
 } from "@/utils/raycast";
+import { SquareArrowOutUpRight } from "lucide-react";
 import PageTitle from "@/components/page-title";
 import RaycastExtensions from "@/components/raycast/raycast-extensions";
 import TabKeyHandler from "@/components/raycast/tab-key-handler";
@@ -26,10 +27,17 @@ export default async function Raycast() {
                             rel="noreferrer"
                             className="flex items-center gap-x-2 text-sm tracking-wider"
                         >
-                            <span>To Raycast Page</span>
-                            <span className="border-white-brown-600 rounded-lg border px-1 py-0.5">
+                            <span className="hidden sm:block">
+                                To Raycast Page
+                            </span>
+                            <span className="border-white-brown-600 hidden rounded-lg border px-1 py-0.5 sm:block">
                                 Tab
                             </span>
+                            <SquareArrowOutUpRight
+                                size={16}
+                                strokeWidth={2.5}
+                                className="sm:hidden"
+                            />
                         </a>
                     </div>
                     <div className="no-scrollbar h-[378px] overflow-y-auto">

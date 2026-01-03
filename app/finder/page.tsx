@@ -57,7 +57,7 @@ export default function Finder() {
                         rel="noreferrer"
                     >
                         <FileUser size={18} />
-                        <span className="pl-2 text-xs underline underline-offset-2 sm:text-sm">
+                        <span className="text-xs underline underline-offset-2 sm:text-sm">
                             My Resume
                         </span>
                     </a>
