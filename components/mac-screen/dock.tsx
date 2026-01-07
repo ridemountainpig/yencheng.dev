@@ -78,6 +78,15 @@ export default function Dock() {
             link: false,
         },
         {
+            src: "/dock/photo.png",
+            alt: "photo icon",
+            className: "rounded-xl cursor-pointer",
+            label: "Photo",
+            url: "/photo",
+            showInfo: false,
+            link: false,
+        },
+        {
             src: "/dock/github.png",
             alt: "github icon",
             className: "rounded-xl cursor-pointer",
@@ -194,15 +203,6 @@ export default function Dock() {
                     text: "text-white-black-900",
                 },
             },
-        },
-        {
-            src: "/dock/monkeytype-readme.png",
-            alt: "monkeytype readme icon",
-            className: "rounded-xl bg-white p-1.5 cursor-pointer",
-            label: "Monkeytype Readme",
-            url: "https://monkeytype-readme.com/",
-            showInfo: false,
-            link: false,
         },
     ];
 

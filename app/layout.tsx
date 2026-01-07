@@ -30,14 +30,6 @@ export const metadata: Metadata = {
         title: "Yen Cheng Lin",
         description:
             "The personal website of Yen Cheng Lin, a software engineer and coffee enthusiast.",
-        images: [
-            {
-                url: "/api/og",
-                width: 1200,
-                height: 630,
-                alt: "Yen Cheng Lin",
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
@@ -45,7 +37,6 @@ export const metadata: Metadata = {
         description:
             "The personal website of Yen Cheng Lin, a software engineer and coffee enthusiast.",
         creator: "@ridemountainpig",
-        images: ["/api/og"],
     },
 };
 
