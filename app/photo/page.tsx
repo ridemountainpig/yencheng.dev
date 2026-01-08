@@ -63,7 +63,7 @@ export default function PhotoPage() {
                 >
                     <button
                         onClick={() => setFullscreenImage(null)}
-                        className="absolute top-4 right-4 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+                        className="absolute top-4 right-4 z-10 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
                         aria-label="Close fullscreen"
                     >
                         <X className="size-6" />
@@ -77,7 +77,7 @@ export default function PhotoPage() {
                                     e.stopPropagation();
                                     handleFullscreenNav("prev");
                                 }}
-                                className="absolute left-4 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+                                className="absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
                                 aria-label="Previous image"
                             >
                                 <ChevronLeft className="size-6" />
@@ -87,7 +87,7 @@ export default function PhotoPage() {
                                     e.stopPropagation();
                                     handleFullscreenNav("next");
                                 }}
-                                className="absolute right-4 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+                                className="absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
                                 aria-label="Next image"
                             >
                                 <ChevronRight className="size-6" />
@@ -96,21 +96,23 @@ export default function PhotoPage() {
                     )}
 
                     <div
-                        className="relative max-h-[90vh] max-w-[90vw]"
+                        className="pointer-events-none relative max-h-[90vh] max-w-[90vw]"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <Image
-                            src={
-                                fullscreenImage.data.paths[
-                                    fullscreenImage.imageIndex
-                                ]
-                            }
-                            alt={fullscreenImage.data.description || ""}
-                            width={1200}
-                            height={1600}
-                            className="max-h-[90vh] max-w-full object-contain"
-                        />
-                        <div className="absolute right-0 bottom-0 left-0 bg-linear-to-t from-black/60 to-transparent p-4 text-white">
+                        <div className="pointer-events-auto">
+                            <Image
+                                src={
+                                    fullscreenImage.data.paths[
+                                        fullscreenImage.imageIndex
+                                    ]
+                                }
+                                alt={fullscreenImage.data.description || ""}
+                                width={1200}
+                                height={1600}
+                                className="max-h-[90vh] max-w-full object-contain"
+                            />
+                        </div>
+                        <div className="pointer-events-auto absolute right-0 bottom-0 left-0 bg-linear-to-t from-black/60 to-transparent p-4 text-white">
                             <p className="font-medium">
                                 {fullscreenImage.data.description}
                             </p>
@@ -235,7 +237,7 @@ function PhotoMarkers({
                                         e.stopPropagation();
                                         handlePopupNav("prev");
                                     }}
-                                    className="absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-black/40 p-1.5 text-white/80 transition-all hover:bg-black/60 hover:text-white"
+                                    className="absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
                                     aria-label="Previous image"
                                 >
                                     <ChevronLeft className="size-4" />
@@ -245,7 +247,7 @@ function PhotoMarkers({
                                         e.stopPropagation();
                                         handlePopupNav("next");
                                     }}
-                                    className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-black/40 p-1.5 text-white/80 transition-all hover:bg-black/60 hover:text-white"
+                                    className="absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
                                     aria-label="Next image"
                                 >
                                     <ChevronRight className="size-4" />
@@ -276,7 +278,7 @@ function PhotoMarkers({
                             onClick={() =>
                                 onFullscreen(activeImage, popupImageIndex)
                             }
-                            className="absolute top-4 right-4 rounded-full bg-black/40 p-1.5 text-white/80 transition-all hover:bg-black/60 hover:text-white"
+                            className="absolute top-4 right-4 z-10 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
                             aria-label="View fullscreen"
                         >
                             <Maximize className="size-4" />
