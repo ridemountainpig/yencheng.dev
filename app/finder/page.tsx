@@ -1,4 +1,5 @@
 import { MapPin, Briefcase, FileUser, HardDriveDownload } from "lucide-react";
+import { RaycastIcon } from "@/components/raycast/raycast-icon";
 
 export default function Finder() {
     const experience = [
@@ -42,6 +43,12 @@ export default function Finder() {
                         <MapPin size={18} />
                         <span className="pl-2 text-xs sm:text-sm">
                             Taichung, Taiwan
+                        </span>
+                    </div>
+                    <div className="mt-4 flex h-fit items-center">
+                        <RaycastIcon width={18} height={18} />
+                        <span className="pl-2 text-xs sm:text-sm">
+                            Raycast Ambassador
                         </span>
                     </div>
                     <div className="mt-4 flex h-fit items-center">

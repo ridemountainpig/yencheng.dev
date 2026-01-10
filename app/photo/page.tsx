@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import {
@@ -9,7 +10,6 @@ import {
     useMap,
 } from "@/components/ui/map";
 import { ChevronLeft, ChevronRight, Maximize, X } from "lucide-react";
-import Image from "next/image";
 import { useState, useCallback } from "react";
 import images from "./images.json";
 
@@ -100,7 +100,7 @@ export default function PhotoPage() {
                         onClick={(e) => e.stopPropagation()}
                     >
                         <div className="pointer-events-auto">
-                            <Image
+                            <img
                                 src={
                                     fullscreenImage.data.paths[
                                         fullscreenImage.imageIndex
@@ -198,7 +198,7 @@ function PhotoMarkers({
                 >
                     <MarkerContent>
                         <div className="size-8 cursor-pointer overflow-hidden rounded-full border-2 border-white shadow-lg transition-transform hover:scale-110">
-                            <Image
+                            <img
                                 src={image.paths[0]}
                                 alt={image.description || ""}
                                 width={32}
@@ -221,8 +221,7 @@ function PhotoMarkers({
                     className="w-[300px] cursor-default border-0! bg-transparent! p-0! shadow-none! focus:outline-none"
                 >
                     <div className="group relative isolate aspect-4/3 w-full overflow-hidden rounded-sm shadow-2xl ring-4 ring-white">
-                        <Image
-                            fill
+                        <img
                             src={activeImage.paths[popupImageIndex]}
                             alt={activeImage.description || ""}
                             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"

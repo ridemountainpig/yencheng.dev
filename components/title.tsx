@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 interface TitleProps {
     title: string;
     bgColor?: string;
+    textStyle?: string;
 }
 
 export default function Title({
     title,
     bgColor = "bg-white-brown-600",
+    textStyle = "",
 }: TitleProps) {
     return (
         <div className="relative inline-block overflow-hidden select-none">
@@ -20,7 +22,9 @@ export default function Title({
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 style={{ transformOrigin: "left" }}
             ></motion.span>
-            <span className="font-nunito relative text-2xl sm:text-3xl">
+            <span
+                className={`font-nunito relative text-2xl sm:text-3xl ${textStyle}`}
+            >
                 {title}
             </span>
         </div>

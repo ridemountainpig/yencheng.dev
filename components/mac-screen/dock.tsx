@@ -87,6 +87,15 @@ export default function Dock() {
             link: false,
         },
         {
+            src: "/dock/instagram.png",
+            alt: "instagram icon",
+            className: "rounded-xl cursor-pointer",
+            label: "Instagram",
+            url: "/instagram",
+            showInfo: false,
+            link: false,
+        },
+        {
             src: "/dock/github.png",
             alt: "github icon",
             className: "rounded-xl cursor-pointer",
@@ -220,8 +229,8 @@ export default function Dock() {
                 />
             </div>
 
-            <div className="group bg-white-brown-600/50 sm:bg-menubar/40 absolute bottom-2 left-1/2 flex h-16 w-[88%] -translate-x-1/2 transform items-center justify-center rounded-[1.25rem] p-2 sm:bottom-2 sm:w-fit sm:rounded-2xl sm:p-3">
-                <div className="flex h-full items-center gap-x-2 sm:gap-x-3 md:group-hover:hidden">
+            <div className="group bg-white-brown-600/50 sm:bg-menubar/40 absolute bottom-2 left-1/2 flex h-16 w-max -translate-x-1/2 transform items-center justify-center rounded-[1.25rem] p-2 sm:bottom-2 sm:rounded-2xl sm:p-3">
+                <div className="flex h-full items-center gap-x-1 sm:gap-x-2 md:group-hover:hidden">
                     {dockItems.map((item) => (
                         <DockItemButton
                             key={item.url}

@@ -15,10 +15,8 @@ export default function DockItemButton({
     const ButtonContent = (
         <>
             <img
-                className={item.className}
+                className={`${item.className} h-[40px] w-[40px] shrink-0 object-contain sm:h-[45px] sm:w-[45px]`}
                 src={item.src}
-                height={45}
-                width={45}
                 alt={item.alt}
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
@@ -39,14 +37,14 @@ export default function DockItemButton({
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex flex-col items-center justify-center focus:outline-hidden"
+            className="group relative flex shrink-0 flex-col items-center justify-center focus:outline-hidden"
         >
             {ButtonContent}
         </a>
     ) : (
         <button
             type="button"
-            className="group relative flex flex-col items-center justify-center focus:outline-hidden"
+            className="group relative flex shrink-0 flex-col items-center justify-center focus:outline-hidden"
             onClick={() => onClick(item)}
         >
             {ButtonContent}
