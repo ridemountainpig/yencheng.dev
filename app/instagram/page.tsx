@@ -31,19 +31,14 @@ export default function InstagramPage() {
     const [selectedItem, setSelectedItem] = useState<HighlightItem | null>(
         null,
     );
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
 
-    const [shuffledData, setShuffledData] = useState<HighlightItem[]>(
-        highlightUrls as HighlightItem[],
-    );
+    const [shuffledData, setShuffledData] = useState<HighlightItem[]>([]);
 
     useEffect(() => {
         setShuffledData(shuffleArray(highlightUrls as HighlightItem[]));
+        setIsMounted(true);
     }, []);
-
-    useEffect(() => {
-        setIsVideoLoaded(false);
-    }, [selectedItem]);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -57,6 +52,60 @@ export default function InstagramPage() {
     }, [selectedItem]);
 
     const isSelectedVideo = selectedItem ? isVideo(selectedItem.url) : false;
+
+    const skeletonItems = Array.from({ length: 12 }).map((_, index) => (
+        <div
+            key={`skeleton-${index}`}
+            className="aspect-2/3 animate-pulse rounded-lg bg-gray-200"
+            style={{
+                animationDelay: `${index * 0.1}s`,
+            }}
+        />
+    ));
+
+    const imageItems = shuffledData.map((item, index) => (
+        <motion.div
+            key={item.img}
+            className="group cursor-pointer overflow-hidden rounded-lg"
+            onClick={() => setSelectedItem(item)}
+            initial={{
+                opacity: 0,
+                y: 100,
+                filter: "blur(10px)",
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+            }}
+            viewport={{
+                once: true,
+                margin: "-50px",
+            }}
+            transition={{
+                duration: 0.5,
+                ease: "easeOut",
+            }}
+        >
+            <div className="relative overflow-hidden rounded-lg transition-transform duration-300 ease-out group-hover:scale-[1.03]">
+                <img
+                    src={item.img}
+                    alt={`Instagram highlight ${index + 1}`}
+                    width={400}
+                    height={600}
+                    className="w-full object-cover transition-all duration-300 group-hover:brightness-110"
+                />
+                <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/5" />
+                {isVideo(item.url) && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="rounded-full bg-black/40 p-3 backdrop-blur-sm">
+                            <Play className="size-6 fill-white text-white" />
+                        </div>
+                    </div>
+                )}
+            </div>
+        </motion.div>
+    ));
 
     return (
         <>
@@ -75,49 +124,7 @@ export default function InstagramPage() {
                             </span>
                         </div>
 
-                        {shuffledData.map((item, index) => (
-                            <motion.div
-                                key={index}
-                                className="group cursor-pointer overflow-hidden rounded-lg"
-                                onClick={() => setSelectedItem(item)}
-                                initial={{
-                                    opacity: 0,
-                                    y: 100,
-                                    filter: "blur(10px)",
-                                }}
-                                whileInView={{
-                                    opacity: 1,
-                                    y: 0,
-                                    filter: "blur(0px)",
-                                }}
-                                viewport={{
-                                    once: true,
-                                    margin: "-50px",
-                                }}
-                                transition={{
-                                    duration: 0.5,
-                                    ease: "easeOut",
-                                }}
-                            >
-                                <div className="relative overflow-hidden rounded-lg transition-transform duration-300 ease-out group-hover:scale-[1.03]">
-                                    <img
-                                        src={item.img}
-                                        alt={`Instagram highlight ${index + 1}`}
-                                        width={400}
-                                        height={600}
-                                        className="w-full object-cover transition-all duration-300 group-hover:brightness-110"
-                                    />
-                                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/5" />
-                                    {isVideo(item.url) && (
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className="rounded-full bg-black/40 p-3 backdrop-blur-sm">
-                                                <Play className="size-6 fill-white text-white" />
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </motion.div>
-                        ))}
+                        {isMounted ? imageItems : skeletonItems}
                     </div>
                 </div>
             </div>
@@ -148,7 +155,6 @@ export default function InstagramPage() {
                                     autoPlay
                                     playsInline
                                     muted
-                                    onLoadedData={() => setIsVideoLoaded(true)}
                                     className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain"
                                 />
                             ) : (
