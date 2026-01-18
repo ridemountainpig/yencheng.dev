@@ -1,17 +1,23 @@
 import { Extension } from "@/types/type";
+import { cn } from "@/lib/utils";
 
 interface RaycastItemProps {
     extension: Extension;
-    index: number;
+    isSelected?: boolean;
 }
 
-export default function RaycastExtItem({ extension, index }: RaycastItemProps) {
+export default function RaycastExtItem({
+    extension,
+    isSelected = false,
+}: RaycastItemProps) {
     return (
-        <a
-            key={index}
-            className="bg-white-brown-500 hover:bg-white-brown-600/60 flex h-[40px] items-center rounded-lg px-2.5"
-            href={extension.store_url}
-            target="_blank"
+        <div
+            className={cn(
+                "flex h-[40px] cursor-pointer items-center rounded-lg px-2.5",
+                isSelected
+                    ? "bg-white-brown-600/80"
+                    : "bg-white-brown-500 hover:bg-white-brown-600/60",
+            )}
         >
             <img
                 src={extension.icons.light ?? ""}
@@ -25,6 +31,6 @@ export default function RaycastExtItem({ extension, index }: RaycastItemProps) {
                     ? extension.description.slice(0, 45) + "..."
                     : extension.description}
             </span>
-        </a>
+        </div>
     );
 }
