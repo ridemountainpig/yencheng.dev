@@ -375,5 +375,26 @@
         "date": "2018-7-26",
         "latitude": -33.8567041870001,
         "longitude": 151.21567220624533
+    },
+    {
+        "paths": ["/photo/photo-82.webp"],
+        "description": "Ra Wai Beach",
+        "date": "2026-2-20",
+        "latitude": 7.77277379579586,
+        "longitude": 98.324355689473
+    },
+    {
+        "paths": ["/photo/photo-83.webp", "/photo/photo-84.webp"],
+        "description": "วัดไชยธาราราม",
+        "date": "2026-2-19",
+        "latitude": 7.849430112716702,
+        "longitude": 98.33684315571388
+    },
+    {
+        "paths": ["/photo/photo-85.webp", "/photo/photo-86.webp"],
+        "description": "Khao Phing Kan",
+        "date": "2026-2-18",
+        "latitude": 8.274513359335101,
+        "longitude": 98.5012102285372
     }
 ]
