@@ -102,6 +102,7 @@ export default function PhotoPage() {
                         <div className="pointer-events-auto">
                             <img
                                 src={
+                                    "https://r2.yencheng.dev" +
                                     fullscreenImage.data.paths[
                                         fullscreenImage.imageIndex
                                     ]
@@ -199,7 +200,7 @@ function PhotoMarkers({
                     <MarkerContent>
                         <div className="size-8 cursor-pointer overflow-hidden rounded-full border-2 border-white shadow-lg transition-transform hover:scale-110">
                             <img
-                                src={image.paths[0]}
+                                src={"https://r2.yencheng.dev" + image.paths[0]}
                                 alt={image.description || ""}
                                 width={32}
                                 height={32}
@@ -222,7 +223,10 @@ function PhotoMarkers({
                 >
                     <div className="group relative isolate aspect-4/3 w-full overflow-hidden rounded-sm shadow-2xl ring-4 ring-white">
                         <img
-                            src={activeImage.paths[popupImageIndex]}
+                            src={
+                                "https://r2.yencheng.dev" +
+                                activeImage.paths[popupImageIndex]
+                            }
                             alt={activeImage.description || ""}
                             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         />

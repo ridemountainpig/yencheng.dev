@@ -1,40 +1,40 @@
 [
     {
-        "paths": ["/photo/photo-1.webp"],
+        "paths": ["/photos/photo-1.webp"],
         "date": "2025-02-01",
         "latitude": 24.542853303346178,
         "longitude": 120.70177046650745
     },
     {
-        "paths": ["/photo/photo-2.webp"],
+        "paths": ["/photos/photo-2.webp"],
         "description": "台灣祭",
         "date": "2025-04-03",
         "latitude": 21.9440645134541,
         "longitude": 120.79545090519844
     },
     {
-        "paths": ["/photo/photo-3.webp", "/photo/photo-60.webp"],
+        "paths": ["/photos/photo-3.webp", "/photos/photo-60.webp"],
         "description": "海螺記",
         "date": "2025-07-26",
         "latitude": 22.61632756314186,
         "longitude": 120.29224695223952
     },
     {
-        "paths": ["/photo/photo-4.webp"],
+        "paths": ["/photos/photo-4.webp"],
         "description": "小樽堺町通り商店街",
         "date": "2025-08-23",
         "latitude": 43.19164802414449,
         "longitude": 141.00680333939766
     },
     {
-        "paths": ["/photo/photo-6.webp", "/photo/photo-5.webp"],
+        "paths": ["/photos/photo-6.webp", "/photos/photo-5.webp"],
         "description": "函館ベイエリア",
         "date": "2025-08-23",
         "latitude": 41.76762326828879,
         "longitude": 140.7160249867678
     },
     {
-        "paths": ["/photo/photo-7.webp"],
+        "paths": ["/photos/photo-7.webp"],
         "description": "Raycast Cafe",
         "date": "2025-10-19",
         "latitude": 24.127435043304914,
@@ -42,10 +42,10 @@
     },
     {
         "paths": [
-            "/photo/photo-8.webp",
-            "/photo/photo-9.webp",
-            "/photo/photo-11.webp",
-            "/photo/photo-15.webp"
+            "/photos/photo-8.webp",
+            "/photos/photo-9.webp",
+            "/photos/photo-11.webp",
+            "/photos/photo-15.webp"
         ],
         "description": "🗻",
         "date": "2025-10-29",
@@ -53,14 +53,14 @@
         "longitude": 138.76744652145678
     },
     {
-        "paths": ["/photo/photo-10.webp", "/photo/photo-12.webp"],
+        "paths": ["/photos/photo-10.webp", "/photos/photo-12.webp"],
         "description": "🗻",
         "date": "2025-10-29",
         "latitude": 35.484023674168824,
         "longitude": 138.79593971556392
     },
     {
-        "paths": ["/photo/photo-22.webp", "/photo/photo-13.webp"],
+        "paths": ["/photos/photo-22.webp", "/photos/photo-13.webp"],
         "description": "浅草寺",
         "date": "2025-11-1",
         "latitude": 35.71490437931857,
@@ -68,9 +68,9 @@
     },
     {
         "paths": [
-            "/photo/photo-14.webp",
-            "/photo/photo-16.webp",
-            "/photo/photo-21.webp"
+            "/photos/photo-14.webp",
+            "/photos/photo-16.webp",
+            "/photos/photo-21.webp"
         ],
         "description": "明治神宮",
         "date": "2025-11-2",
@@ -79,9 +79,9 @@
     },
     {
         "paths": [
-            "/photo/photo-17.webp",
-            "/photo/photo-19.webp",
-            "/photo/photo-18.webp"
+            "/photos/photo-17.webp",
+            "/photos/photo-19.webp",
+            "/photos/photo-18.webp"
         ],
         "description": "🗼",
         "date": "2025-10-30",
@@ -89,35 +89,35 @@
         "longitude": 139.74549725218327
     },
     {
-        "paths": ["/photo/photo-20.webp"],
+        "paths": ["/photos/photo-20.webp"],
         "description": "下吉田駅",
         "date": "2025-10-29",
         "latitude": 35.49784550252859,
         "longitude": 138.8031663719116
     },
     {
-        "paths": ["/photo/photo-25.webp"],
+        "paths": ["/photos/photo-25.webp"],
         "description": "晴空塔",
         "date": "2025-10-31",
         "latitude": 35.710239446568146,
         "longitude": 139.8106828343651
     },
     {
-        "paths": ["/photo/photo-23.webp", "/photo/photo-43.webp"],
+        "paths": ["/photos/photo-23.webp", "/photos/photo-43.webp"],
         "description": "道頓堀",
         "date": "2025-12-8",
         "latitude": 34.66941855188575,
         "longitude": 135.50295486572702
     },
     {
-        "paths": ["/photo/photo-26.webp", "/photo/photo-28.webp"],
+        "paths": ["/photos/photo-26.webp", "/photos/photo-28.webp"],
         "description": "京都駅",
         "date": "2025-12-4",
         "latitude": 34.9860511441264,
         "longitude": 135.7587988832675
     },
     {
-        "paths": ["/photo/photo-28.webp"],
+        "paths": ["/photos/photo-28.webp"],
         "description": "京都塔",
         "date": "2025-12-4",
         "latitude": 34.98771473046991,
@@ -125,10 +125,10 @@
     },
     {
         "paths": [
-            "/photo/photo-32.webp",
-            "/photo/photo-27.webp",
-            "/photo/photo-30.webp",
-            "/photo/photo-47.webp"
+            "/photos/photo-32.webp",
+            "/photos/photo-27.webp",
+            "/photos/photo-30.webp",
+            "/photos/photo-47.webp"
         ],
         "description": "清水寺",
         "date": "2025-12-5",
@@ -136,7 +136,7 @@
         "longitude": 135.78459662374516
     },
     {
-        "paths": ["/photo/photo-29.webp"],
+        "paths": ["/photos/photo-29.webp"],
         "description": "八阪神社",
         "date": "2025-12-5",
         "latitude": 35.00383156564836,
@@ -144,9 +144,9 @@
     },
     {
         "paths": [
-            "/photo/photo-31.webp",
-            "/photo/photo-75.webp",
-            "/photo/photo-48.webp"
+            "/photos/photo-31.webp",
+            "/photos/photo-75.webp",
+            "/photos/photo-48.webp"
         ],
         "description": "関西空港",
         "date": "2025-12-4",
@@ -154,21 +154,21 @@
         "longitude": 135.23675309426105
     },
     {
-        "paths": ["/photo/photo-33.webp"],
+        "paths": ["/photos/photo-33.webp"],
         "description": "難波八阪神社",
         "date": "2025-12-8",
         "latitude": 34.66174010705965,
         "longitude": 135.4967575441792
     },
     {
-        "paths": ["/photo/photo-34.webp", "/photo/photo-52.webp"],
+        "paths": ["/photos/photo-34.webp", "/photos/photo-52.webp"],
         "description": "春日大社",
         "date": "2025-12-9",
         "latitude": 34.6816777120551,
         "longitude": 135.8485469986004
     },
     {
-        "paths": ["/photo/photo-35.webp", "/photo/photo-50.webp"],
+        "paths": ["/photos/photo-35.webp", "/photos/photo-50.webp"],
         "description": "ハルカス300",
         "date": "2025-12-9",
         "latitude": 34.64648846935116,
@@ -176,10 +176,10 @@
     },
     {
         "paths": [
-            "/photo/photo-38.webp",
-            "/photo/photo-41.webp",
-            "/photo/photo-42.webp",
-            "/photo/photo-36.webp"
+            "/photos/photo-38.webp",
+            "/photos/photo-41.webp",
+            "/photos/photo-42.webp",
+            "/photos/photo-36.webp"
         ],
         "description": "伏見稻荷大社",
         "date": "2025-12-7",
@@ -187,77 +187,77 @@
         "longitude": 135.7790246843385
     },
     {
-        "paths": ["/photo/photo-37.webp", "/photo/photo-44.webp"],
+        "paths": ["/photos/photo-37.webp", "/photos/photo-44.webp"],
         "description": "平等院",
         "date": "2025-12-7",
         "latitude": 34.88952831392811,
         "longitude": 135.80766755014207
     },
     {
-        "paths": ["/photo/photo-39.webp"],
+        "paths": ["/photos/photo-39.webp"],
         "description": "梅田スカイビル",
         "date": "2025-12-7",
         "latitude": 34.70691474135769,
         "longitude": 135.49193194264902
     },
     {
-        "paths": ["/photo/photo-40.webp"],
+        "paths": ["/photos/photo-40.webp"],
         "description": "京都河原町",
         "date": "2025-12-7",
         "latitude": 35.00393259219393,
         "longitude": 135.76869940863855
     },
     {
-        "paths": ["/photo/photo-45.webp"],
+        "paths": ["/photos/photo-45.webp"],
         "description": "新大阪駅",
         "date": "2025-12-7",
         "latitude": 34.73361566312949,
         "longitude": 135.50029761209473
     },
     {
-        "paths": ["/photo/photo-46.webp"],
+        "paths": ["/photos/photo-46.webp"],
         "description": "大阪城",
         "date": "2025-12-8",
         "latitude": 34.687414809133244,
         "longitude": 135.52582515865976
     },
     {
-        "paths": ["/photo/photo-49.webp"],
+        "paths": ["/photos/photo-49.webp"],
         "description": "產寧坂",
         "date": "2025-12-5",
         "latitude": 34.99673608548861,
         "longitude": 135.78101402928417
     },
     {
-        "paths": ["/photo/photo-51.webp"],
+        "paths": ["/photos/photo-51.webp"],
         "description": "WowUs",
         "date": "2025-12-8",
         "latitude": 34.695462668868636,
         "longitude": 135.5012391538854
     },
     {
-        "paths": ["/photo/photo-53.webp", "/photo/photo-68.webp"],
+        "paths": ["/photos/photo-53.webp", "/photos/photo-68.webp"],
         "description": "NeciKen mud & flowers",
         "date": "2025-12-20",
         "latitude": 25.045224581559093,
         "longitude": 121.52952904989903
     },
     {
-        "paths": ["/photo/photo-54.webp"],
+        "paths": ["/photos/photo-54.webp"],
         "description": "路邊的野花",
         "date": "2024-12-14",
         "latitude": 24.168015146629635,
         "longitude": 120.63933818865198
     },
     {
-        "paths": ["/photo/photo-56.webp"],
+        "paths": ["/photos/photo-56.webp"],
         "description": "小樽運河",
         "date": "2025-8-24",
         "latitude": 43.2022750837021,
         "longitude": 141.00064929578085
     },
     {
-        "paths": ["/photo/photo-58.webp", "/photo/photo-57.webp"],
+        "paths": ["/photos/photo-58.webp", "/photos/photo-57.webp"],
         "description": "北海道神宮",
         "date": "2025-8-25",
         "latitude": 43.05449760318391,
@@ -265,9 +265,9 @@
     },
     {
         "paths": [
-            "/photo/photo-55.webp",
-            "/photo/photo-59.webp",
-            "/photo/photo-70.webp"
+            "/photos/photo-55.webp",
+            "/photos/photo-59.webp",
+            "/photos/photo-70.webp"
         ],
         "description": "Raycast Tokyo",
         "date": "2025-10-30",
@@ -275,123 +275,123 @@
         "longitude": 139.71676035815543
     },
     {
-        "paths": ["/photo/photo-61.webp", "/photo/photo-24.webp"],
+        "paths": ["/photos/photo-61.webp", "/photos/photo-24.webp"],
         "description": "Legacy Taichung",
         "latitude": 24.176819860545343,
         "longitude": 120.62328958481147
     },
     {
-        "paths": ["/photo/photo-62.webp", "/photo/photo-63.webp"],
+        "paths": ["/photos/photo-62.webp", "/photos/photo-63.webp"],
         "latitude": 24.15032997447585,
         "longitude": 120.66705928110908
     },
     {
-        "paths": ["/photo/photo-64.webp"],
+        "paths": ["/photos/photo-64.webp"],
         "latitude": 24.1339566710709,
         "longitude": 120.67447886946701
     },
     {
-        "paths": ["/photo/photo-65.webp"],
+        "paths": ["/photos/photo-65.webp"],
         "description": "奈良公園",
         "date": "2025-12-9",
         "latitude": 34.68455622864309,
         "longitude": 135.83208480384326
     },
     {
-        "paths": ["/photo/photo-66.webp"],
+        "paths": ["/photos/photo-66.webp"],
         "description": "NRT",
         "latitude": 35.77123095114732,
         "longitude": 140.38396111038665
     },
     {
-        "paths": ["/photo/photo-67.webp"],
+        "paths": ["/photos/photo-67.webp"],
         "description": "Taipei 101",
         "latitude": 25.033369710956855,
         "longitude": 121.5648641836099
     },
     {
-        "paths": ["/photo/photo-69.webp"],
+        "paths": ["/photos/photo-69.webp"],
         "description": "TPE",
         "latitude": 25.080677750796493,
         "longitude": 121.23176787462748
     },
     {
-        "paths": ["/photo/photo-71.webp"],
+        "paths": ["/photos/photo-71.webp"],
         "description": "Bahnhofstrasse",
         "latitude": 47.3723818782544,
         "longitude": 8.538393480204606
     },
     {
-        "paths": ["/photo/photo-72.webp"],
+        "paths": ["/photos/photo-72.webp"],
         "description": "Pilatus",
         "latitude": 46.98026002727777,
         "longitude": 8.254929802411732
     },
     {
-        "paths": ["/photo/photo-73.webp"],
+        "paths": ["/photos/photo-73.webp"],
         "description": "Bahnhof Luzern",
         "latitude": 47.04960286519344,
         "longitude": 8.311004629504946
     },
     {
-        "paths": ["/photo/photo-74.webp"],
+        "paths": ["/photos/photo-74.webp"],
         "description": "Old Bern City",
         "latitude": 46.948271378741225,
         "longitude": 7.453755614779679
     },
     {
-        "paths": ["/photo/photo-76.webp"],
+        "paths": ["/photos/photo-76.webp"],
         "description": "Bern",
         "latitude": 46.94860999359867,
         "longitude": 7.4466050793582275
     },
     {
-        "paths": ["/photo/photo-77.webp"],
+        "paths": ["/photos/photo-77.webp"],
         "description": "Interlaken",
         "latitude": 46.6869240032375,
         "longitude": 7.86189509676063
     },
     {
-        "paths": ["/photo/photo-78.webp"],
+        "paths": ["/photos/photo-78.webp"],
         "description": "Grossmünster",
         "latitude": 47.370716182830485,
         "longitude": 8.544344541035356
     },
     {
-        "paths": ["/photo/photo-79.webp"],
+        "paths": ["/photos/photo-79.webp"],
         "description": "美溪沙灘",
         "latitude": 16.04790680160452,
         "longitude": 108.25154489382271
     },
     {
-        "paths": ["/photo/photo-80.webp"],
+        "paths": ["/photos/photo-80.webp"],
         "description": "會安古鎮",
         "latitude": 15.877580996879564,
         "longitude": 108.33062704670735
     },
     {
-        "paths": ["/photo/photo-81.webp"],
+        "paths": ["/photos/photo-81.webp"],
         "description": "Sydney Opera House",
         "date": "2018-7-26",
         "latitude": -33.8567041870001,
         "longitude": 151.21567220624533
     },
     {
-        "paths": ["/photo/photo-82.webp"],
+        "paths": ["/photos/photo-82.webp"],
         "description": "Ra Wai Beach",
         "date": "2026-2-20",
         "latitude": 7.77277379579586,
         "longitude": 98.324355689473
     },
     {
-        "paths": ["/photo/photo-83.webp", "/photo/photo-84.webp"],
+        "paths": ["/photos/photo-83.webp", "/photos/photo-84.webp"],
         "description": "วัดไชยธาราราม",
         "date": "2026-2-19",
         "latitude": 7.849430112716702,
         "longitude": 98.33684315571388
     },
     {
-        "paths": ["/photo/photo-85.webp", "/photo/photo-86.webp"],
+        "paths": ["/photos/photo-85.webp", "/photos/photo-86.webp"],
         "description": "Khao Phing Kan",
         "date": "2026-2-18",
         "latitude": 8.274513359335101,
