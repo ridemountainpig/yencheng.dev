@@ -1,3 +1,5 @@
+import type { Extension } from "@/types/type";
+
 async function getRaycastExtensions() {
     try {
         const response = await fetch(
@@ -11,13 +13,13 @@ async function getRaycastExtensions() {
 
         try {
             const extensionJson = await response.json();
-            return extensionJson["data"];
+            return extensionJson["data"] as Extension[];
         } catch {
             throw new Error("Failed to parse JSON");
         }
     } catch (error) {
         console.log(error);
-        return null;
+        return [];
     }
 }
 
@@ -34,13 +36,13 @@ async function getRaycastContributionExtensions() {
 
         try {
             const extensionJson = await response.json();
-            return extensionJson["data"];
+            return extensionJson["data"] as Extension[];
         } catch {
             throw new Error("Failed to parse JSON");
         }
     } catch (error) {
         console.log(error);
-        return null;
+        return [];
     }
 }
 

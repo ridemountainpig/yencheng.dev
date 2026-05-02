@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import type { EmblaCarouselType, EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel, {
     type UseEmblaCarouselType,
 } from "embla-carousel-react";
@@ -58,13 +59,37 @@ const Carousel = React.forwardRef<
         },
         ref,
     ) => {
-        const [carouselRef, api] = useEmblaCarousel(
-            {
-                ...opts,
+        const emblaOptions = React.useMemo<EmblaOptionsType>(() => {
+            const userOpts = opts ?? {};
+            const { watchDrag: userWatchDrag, ...rest } = userOpts;
+
+            return {
+                ...rest,
                 axis: orientation === "horizontal" ? "x" : "y",
-            },
-            plugins,
-        );
+                watchDrag: (
+                    emblaApi: EmblaCarouselType,
+                    event: MouseEvent | TouchEvent,
+                ) => {
+                    const target = event.target;
+                    if (
+                        target instanceof Element &&
+                        target.closest("[data-carousel-no-drag]")
+                    ) {
+                        return false;
+                    }
+                    if (userWatchDrag === false) {
+                        return false;
+                    }
+                    if (typeof userWatchDrag === "function") {
+                        const result = userWatchDrag(emblaApi, event);
+                        return result !== false;
+                    }
+                    return true;
+                },
+            };
+        }, [opts, orientation]);
+
+        const [carouselRef, api] = useEmblaCarousel(emblaOptions, plugins);
         const [canScrollPrev, setCanScrollPrev] = React.useState(false);
         const [canScrollNext, setCanScrollNext] = React.useState(false);
 

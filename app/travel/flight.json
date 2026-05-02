@@ -1,0 +1,82 @@
+[
+    {
+        "from": "TPE",
+        "to": "HKG",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "HKG",
+        "to": "BKK",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "TPE",
+        "to": "KUL",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "TPE",
+        "to": "KMJ",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "TPE",
+        "to": "DPS",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "TPE",
+        "to": "SYD",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "RMQ",
+        "to": "HKG",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "RMQ",
+        "to": "MZG",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "TPE",
+        "to": "DAD",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "TPE",
+        "to": "DXB",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "DXB",
+        "to": "ZRH",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "TPE",
+        "to": "HKD",
+        "tripType": "one-way"
+    },
+    {
+        "from": "AKJ",
+        "to": "TPE",
+        "tripType": "one-way"
+    },
+    {
+        "from": "TPE",
+        "to": "NRT",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "TPE",
+        "to": "KIX",
+        "tripType": "round-trip"
+    },
+    {
+        "from": "TPE",
+        "to": "HKT",
+        "tripType": "round-trip"
+    }
+]

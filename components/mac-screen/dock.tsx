@@ -114,6 +114,15 @@ export default function Dock() {
             link: false,
         },
         {
+            src: "/dock/flightcn.png",
+            alt: "flightcn icon",
+            className: "rounded-xl cursor-pointer",
+            label: "flightcn",
+            url: "https://flightcn.yencheng.dev/",
+            showInfo: false,
+            link: false,
+        },
+        {
             src: "/dock/subflow.png",
             alt: "subflow icon",
             className: "rounded-xl cursor-pointer",
@@ -177,38 +186,6 @@ export default function Dock() {
                     bg: "bg-white-brown-400",
                     secondBg: "bg-white-brown-600/50",
                     icon: "text-white-brown-600",
-                    text: "text-white-black-900",
-                },
-            },
-        },
-        {
-            src: "/dock/hue.png",
-            alt: "hue icon",
-            className: "rounded-xl bg-white cursor-pointer",
-            label: "Hue Palette",
-            url: "https://www.hue-palette.com/",
-            showInfo: true,
-            link: false,
-            info: {
-                title: "Hue Palette",
-                description:
-                    "Hue Palette is an innovative tool designed specifically for designers and developers, inspired by the need for harmonious and precise color combinations in projects. This tool offers an intuitive platform that allows users to quickly create custom color palettes, catering to diverse design and development needs.\nWith Hue Palette, users can define base hues, adjust related parameters, and generate color schemes tailored to their projects. The system also supports integration with Tailwind CSS, automatically generating the corresponding configuration code for seamless use in front-end development workflows.\nThe advent of Hue Palette enables designers and developers to manage color combinations more efficiently, focus on creative execution, and ensure the visual effects of their projects are optimized to their fullest potential.",
-                tech: "TypeScript, Next.js, Tailwind CSS",
-                picture: [
-                    {
-                        src: "/hue-palette/1.png",
-                        description: "Hue Generator",
-                    },
-                    {
-                        src: "/hue-palette/2.png",
-                        description: "Hue Color Palette",
-                    },
-                ],
-                style: {
-                    border: "border-slate-400",
-                    bg: "bg-white",
-                    secondBg: "bg-slate-300/50",
-                    icon: "text-slate-300",
                     text: "text-white-black-900",
                 },
             },

@@ -62,7 +62,7 @@
     {
         "paths": ["/photos/photo-22.webp", "/photos/photo-13.webp"],
         "description": "浅草寺",
-        "date": "2025-11-1",
+        "date": "2025-11-01",
         "latitude": 35.71490437931857,
         "longitude": 139.79666600801835
     },
@@ -396,5 +396,30 @@
         "date": "2026-2-18",
         "latitude": 8.274513359335101,
         "longitude": 98.5012102285372
+    },
+    {
+        "paths": [
+            "/photos/photo-88.webp",
+            "/photos/photo-89.webp",
+            "/photos/photo-90.webp"
+        ],
+        "description": "神農街酒吧",
+        "date": "2026-4-3",
+        "latitude": 22.997754106034368,
+        "longitude": 120.19648416760944
+    },
+    {
+        "paths": ["/photos/photo-91.webp"],
+        "description": "林百貨",
+        "date": "2026-4-4",
+        "latitude": 22.991901121156317,
+        "longitude": 120.20257684062278
+    },
+    {
+        "paths": ["/photos/photo-87.webp"],
+        "description": "VH SUB Live",
+        "date": "2026-4-10",
+        "latitude": 25.05185763194544,
+        "longitude": 121.59962172883559
     }
 ]

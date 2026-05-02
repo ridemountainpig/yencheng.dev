@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Newspaper } from "lucide-react";
+import { Newspaper } from "lucide-react";
+import { GitHubLight, LinkedIn, Twitter } from "@ridemountainpig/svgl-react";
 
 export default function Header() {
     return (
@@ -13,9 +14,9 @@ export default function Header() {
                     title="GitHub"
                     className="bg-white-brown-500 text-white-brown-800 rounded-xl p-2"
                 >
-                    <Github
+                    <GitHubLight
                         strokeWidth={2.25}
-                        className="size-[25px] sm:size-[30px]"
+                        className="[&_path]:fill-white-brown-800 size-[25px] sm:size-[30px]"
                     />
                 </Link>
                 <Link
@@ -23,9 +24,9 @@ export default function Header() {
                     title="LinkedIn"
                     className="bg-white-brown-500 text-white-brown-800 rounded-xl p-2"
                 >
-                    <Linkedin
+                    <LinkedIn
                         strokeWidth={2.25}
-                        className="size-[25px] sm:size-[30px]"
+                        className="[&_path]:fill-white-brown-800 size-[25px] sm:size-[30px]"
                     />
                 </Link>
                 <Link
@@ -35,7 +36,7 @@ export default function Header() {
                 >
                     <Twitter
                         strokeWidth={2.25}
-                        className="size-[25px] sm:size-[30px]"
+                        className="[&_path]:fill-white-brown-800 size-[25px] sm:size-[30px]"
                     />
                 </Link>
                 <Link

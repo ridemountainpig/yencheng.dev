@@ -1,15 +1,17 @@
-import {
-    getRaycastExtensions,
-    getRaycastContributionExtensions,
-} from "@/utils/raycast";
 import { SquareArrowOutUpRight } from "lucide-react";
 import PageTitle from "@/components/page-title";
 import RaycastExtensions from "@/components/raycast/raycast-extensions";
 import TabKeyHandler from "@/components/raycast/tab-key-handler";
+import {
+    getRaycastContributionExtensions,
+    getRaycastExtensions,
+} from "@/utils/raycast";
 
 export default async function Raycast() {
-    const extensions = await getRaycastExtensions();
-    const contributionExtensions = await getRaycastContributionExtensions();
+    const [extensions, contributionExtensions] = await Promise.all([
+        getRaycastExtensions(),
+        getRaycastContributionExtensions(),
+    ]);
 
     return (
         <div className="bg-white-black-50 text-white-black-900 h-full w-full pt-6">
