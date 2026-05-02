@@ -1,5 +1,26 @@
+import type { Metadata } from "next";
 import { MapPin, Briefcase, FileUser, HardDriveDownload } from "lucide-react";
 import { RaycastIcon } from "@/components/raycast/raycast-icon";
+
+export const metadata: Metadata = {
+    title: "Resume",
+    description:
+        "Resume of Yen Cheng Lin, a full-stack developer from Taiwan with experience at imCloud, Systex, and Siemens. Raycast Ambassador and open-source contributor.",
+    alternates: {
+        canonical: "https://yencheng.dev/finder",
+    },
+    openGraph: {
+        title: "Resume — Yen Cheng Lin",
+        description:
+            "Resume of Yen Cheng Lin, a full-stack developer from Taiwan with experience at imCloud, Systex, and Siemens.",
+        url: "https://yencheng.dev/finder",
+    },
+    twitter: {
+        title: "Resume — Yen Cheng Lin",
+        description:
+            "Resume of Yen Cheng Lin, a full-stack developer from Taiwan with experience at imCloud, Systex, and Siemens.",
+    },
+};
 
 export default function Finder() {
     const experience = [
@@ -35,7 +56,7 @@ export default function Finder() {
                 <div className="pb-6">
                     <img
                         src="/finder/avatar.png"
-                        alt="My Avatar"
+                        alt="Yen Cheng Lin"
                         className="w-20 rounded-full md:w-30"
                     />
                     <h2 className="mt-4 text-xl">Hi, i&apos;m Yen Cheng</h2>

@@ -8,7 +8,7 @@ import DockItemButton from "@/components/mac-screen/dockItemButton";
 import { useCarousel } from "@/components/ui/carousel";
 
 export default function Dock() {
-    const { scrollNext } = useCarousel();
+    const { api } = useCarousel();
 
     const [screenState, setScreenState] = useState({
         url: "/finder",
@@ -23,7 +23,7 @@ export default function Dock() {
     const handleItemClick = useCallback(
         (item: DockItem) => {
             if (item.label === "My Raycast") {
-                scrollNext();
+                api?.scrollTo(3);
                 return;
             }
 
@@ -44,7 +44,7 @@ export default function Dock() {
                 },
             });
         },
-        [scrollNext],
+        [api],
     );
 
     useEffect(() => {

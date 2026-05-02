@@ -25,7 +25,7 @@ export default function PageTitle({ title }: PageTitleProps) {
                     className="sm:hidden"
                 />
             </div>
-            <Title title={title}></Title>
+            <Title title={title} as="h2"></Title>
             <div className="cursor-pointer" onClick={scrollNext}>
                 <CircleArrowRight
                     strokeWidth={2.25}

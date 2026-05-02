@@ -90,7 +90,7 @@ export default function InstagramPage() {
             <div className="relative overflow-hidden rounded-lg transition-transform duration-300 ease-out group-hover:scale-[1.03]">
                 <img
                     src={item.img}
-                    alt={`Instagram highlight ${index + 1}`}
+                    alt={`Yen Cheng Lin Instagram highlight ${index + 1}`}
                     width={400}
                     height={600}
                     className="w-full object-cover transition-all duration-300 group-hover:brightness-110"
@@ -160,7 +160,7 @@ export default function InstagramPage() {
                             ) : (
                                 <img
                                     src={selectedItem.url}
-                                    alt="Full size view"
+                                    alt="Yen Cheng Lin Instagram highlight — full size"
                                     width={1200}
                                     height={1600}
                                     className="max-h-[90vh] max-w-full rounded-lg object-contain"

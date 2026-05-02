@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Head from "next/head";
 import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -15,29 +14,67 @@ const nunito = localFont({
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://yencheng.dev"),
-    title: "Yen Cheng Lin",
-    description: "The personal website of Yen Cheng Lin.",
-    keywords: ["Yen Cheng Lin", "Yen Cheng", "Ridemountainpig", "林彥成"],
+    title: {
+        default: "Yen Cheng Lin — Full-Stack Developer & Raycast Ambassador",
+        template: "%s — Yen Cheng Lin",
+    },
+    description:
+        "Full-stack developer from Taiwan. Building web apps with Next.js, contributing to open-source projects, and creating Raycast extensions. Raycast Ambassador based in Taichung.",
+    keywords: [
+        "Yen Cheng Lin",
+        "Yen Cheng",
+        "Ridemountainpig",
+        "林彥成",
+        "Full-Stack Developer",
+        "Raycast Ambassador",
+        "Taiwan Developer",
+    ],
     authors: [
         {
-            name: "ridemountainpig",
-            url: "https://www.github.com/ridemountainpig",
+            name: "Yen Cheng Lin",
+            url: "https://yencheng.dev",
         },
     ],
+    verification: {
+        google: "UmkdCtHuAz2VyuxgE8Th1jTiDJQccNGUEBivQ8d96Vc",
+    },
     openGraph: {
         type: "website",
         url: "https://yencheng.dev/",
-        title: "Yen Cheng Lin",
+        title: "Yen Cheng Lin — Full-Stack Developer & Raycast Ambassador",
         description:
-            "The personal website of Yen Cheng Lin, a software engineer and coffee enthusiast.",
+            "Full-stack developer from Taiwan. Building web apps with Next.js, contributing to open-source projects, and creating Raycast extensions.",
     },
     twitter: {
         card: "summary_large_image",
-        title: "Yen Cheng Lin",
+        title: "Yen Cheng Lin — Full-Stack Developer & Raycast Ambassador",
         description:
-            "The personal website of Yen Cheng Lin, a software engineer and coffee enthusiast.",
+            "Full-stack developer from Taiwan. Building web apps with Next.js, contributing to open-source projects, and creating Raycast extensions.",
+        site: "@ridemountainpig",
         creator: "@ridemountainpig",
     },
+};
+
+const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Yen Cheng Lin",
+    alternateName: "ridemountainpig",
+    url: "https://yencheng.dev",
+    jobTitle: "Full-Stack Developer",
+    description:
+        "Full-stack developer from Taiwan, Raycast Ambassador, and open-source contributor.",
+    address: {
+        "@type": "PostalAddress",
+        addressLocality: "Taichung",
+        addressCountry: "TW",
+    },
+    sameAs: [
+        "https://github.com/ridemountainpig",
+        "https://www.linkedin.com/in/iamyencheng/",
+        "https://x.com/ridemountainpig",
+        "https://blog.yencheng.dev",
+    ],
 };
 
 export default function RootLayout({
@@ -47,12 +84,14 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <Head>
-                <meta
-                    name="google-site-verification"
-                    content="UmkdCtHuAz2VyuxgE8Th1jTiDJQccNGUEBivQ8d96Vc"
+            <head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(personSchema),
+                    }}
                 />
-            </Head>
+            </head>
             <body
                 className={`${nunito.variable} bg-white-black-50 antialiased`}
             >

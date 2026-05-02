@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: ["/_next/static/media/"],
         },
-        sitemap: "https://www.yencheng.dev/sitemap.xml",
+        sitemap: "https://yencheng.dev/sitemap.xml",
     };
 }

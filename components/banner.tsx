@@ -10,7 +10,6 @@ export default function Banner() {
     return (
         <div className="font-nunito text-white-black-900 flex h-[90vh] w-full items-center justify-center tracking-wider select-none">
             <div className="-mt-8 w-full text-center">
-                <h2 className="hidden">Hello, I&apos;m Yen Cheng Lin</h2>
                 <motion.div
                     className="text-4xl sm:text-6xl"
                     initial={{ opacity: 0, scale: 1, y: 50 }}

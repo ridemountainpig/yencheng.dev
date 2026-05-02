@@ -6,12 +6,14 @@ interface TitleProps {
     title: string;
     bgColor?: string;
     textStyle?: string;
+    as?: "h2" | "h3" | "span";
 }
 
 export default function Title({
     title,
     bgColor = "bg-white-brown-600",
     textStyle = "",
+    as: Tag = "span",
 }: TitleProps) {
     return (
         <div className="relative inline-block overflow-hidden select-none">
@@ -22,11 +24,11 @@ export default function Title({
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 style={{ transformOrigin: "left" }}
             ></motion.span>
-            <span
+            <Tag
                 className={`font-nunito relative text-2xl sm:text-3xl ${textStyle}`}
             >
                 {title}
-            </span>
+            </Tag>
         </div>
     );
 }
