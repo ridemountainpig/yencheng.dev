@@ -80,7 +80,7 @@ export default function Finder() {
                     </div>
                     <a
                         className="mt-4 flex h-fit items-center gap-x-2"
-                        href="/finder/resume.pdf"
+                        href="https://resume.yencheng.dev/"
                         target="_blank"
                         rel="noreferrer"
                     >
