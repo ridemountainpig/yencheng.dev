@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import DynamicDock from "dynamic-dock";
+import { motion, useMotionValue } from "framer-motion";
 import { DockItem, InfoStyle } from "@/types/type";
 import Screen from "@/components/mac-screen/screen";
 import DockItemButton from "@/components/mac-screen/dockItemButton";
@@ -9,6 +9,17 @@ import { useCarousel } from "@/components/ui/carousel";
 
 export default function Dock() {
     const { api } = useCarousel();
+
+    const mouseX = useMotionValue(Infinity);
+    const [magnify, setMagnify] = useState(false);
+
+    useEffect(() => {
+        const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+        setMagnify(mq.matches);
+        const onChange = (e: MediaQueryListEvent) => setMagnify(e.matches);
+        mq.addEventListener("change", onChange);
+        return () => mq.removeEventListener("change", onChange);
+    }, []);
 
     const [screenState, setScreenState] = useState({
         url: "/finder",
@@ -46,26 +57,6 @@ export default function Dock() {
         },
         [api],
     );
-
-    useEffect(() => {
-        const initialData = {
-            url: "/finder",
-            showInfo: false,
-            title: "",
-            description: "",
-            tech: "",
-            picture: [],
-            style: {
-                border: "",
-                bg: "",
-                secondBg: "",
-                icon: "",
-                text: "",
-            },
-        };
-
-        setScreenState(initialData);
-    }, []);
 
     const dockItems: DockItem[] = [
         {
@@ -206,29 +197,26 @@ export default function Dock() {
                 />
             </div>
 
-            <div className="group bg-white-brown-600/50 sm:bg-menubar/40 absolute bottom-2 left-1/2 flex h-16 w-max -translate-x-1/2 transform items-center justify-center rounded-[1.25rem] p-2 sm:bottom-2 sm:rounded-2xl sm:p-3">
-                <div className="flex h-full items-center gap-x-1 sm:gap-x-2 md:group-hover:hidden">
-                    {dockItems.map((item) => (
-                        <DockItemButton
-                            key={item.url}
-                            item={item}
-                            onClick={handleItemClick}
-                        />
-                    ))}
-                </div>
-
-                <div className="hidden md:group-hover:block">
-                    <DynamicDock gapX={10} imageWidth={50}>
-                        {dockItems.map((item) => (
-                            <DockItemButton
-                                key={item.url}
-                                item={item}
-                                onClick={handleItemClick}
-                            />
-                        ))}
-                    </DynamicDock>
-                </div>
-            </div>
+            <motion.div
+                onMouseMove={(e) => mouseX.set(e.clientX)}
+                onMouseLeave={() => mouseX.set(Infinity)}
+                className="dock-panel liquid-glass absolute bottom-2 left-1/2 flex h-14 w-max -translate-x-1/2 transform items-end gap-x-1 rounded-[1.25rem] p-2 sm:h-[69px] sm:gap-x-2 sm:rounded-3xl sm:p-3"
+            >
+                {dockItems.map((item) => (
+                    <DockItemButton
+                        key={item.label}
+                        item={item}
+                        mouseX={mouseX}
+                        magnify={magnify}
+                        isActive={
+                            !item.link &&
+                            item.url !== "" &&
+                            item.url === screenState.url
+                        }
+                        onClick={handleItemClick}
+                    />
+                ))}
+            </motion.div>
         </>
     );
 }
