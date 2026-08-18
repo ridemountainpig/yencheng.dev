@@ -15,6 +15,8 @@ interface PageProps {
     params: Promise<{ section?: string[] }>;
 }
 
+export const dynamicParams = false;
+
 const SECTION_METADATA: Record<string, Metadata> = {
     portfolio: {
         title: "Portfolio",

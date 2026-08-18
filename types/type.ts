@@ -26,16 +26,10 @@ export interface InfoStyle {
 
 // Raycast Extension types
 export interface Extension {
-    name: string;
     store_url: string;
-    download_count: number;
     title: string;
     description: string;
-    source_url: string;
-    readme_url: string;
-    readme_assets_path: string;
     icons: {
         light: string | null;
-        dark: string | null;
     };
 }

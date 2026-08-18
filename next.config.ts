@@ -21,6 +21,36 @@ const nextConfig: NextConfig = {
                 destination: "/footer",
                 permanent: true,
             },
+            {
+                source: "/about",
+                destination: "/portfolio",
+                permanent: true,
+            },
+            {
+                source: "/intro",
+                destination: "/",
+                permanent: true,
+            },
+            {
+                source: "/project",
+                destination: "/portfolio",
+                permanent: true,
+            },
+            {
+                source: "/projects",
+                destination: "/portfolio",
+                permanent: true,
+            },
+            {
+                source: "/work",
+                destination: "/portfolio",
+                permanent: true,
+            },
+            {
+                source: "/works",
+                destination: "/portfolio",
+                permanent: true,
+            },
         ];
     },
 };
