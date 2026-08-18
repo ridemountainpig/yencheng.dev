@@ -60,17 +60,24 @@ export default function RaycastConfettiItem({
     return (
         <div
             className={cn(
-                "flex h-[40px] cursor-pointer items-center rounded-lg px-2.5",
+                "flex h-[38px] cursor-pointer items-center rounded-[10px] px-2",
                 isSelected
                     ? "bg-white-brown-600/80"
                     : "bg-white-brown-500 hover:bg-white-brown-600/60",
             )}
             onClick={onClick}
         >
-            <span className="text-xl leading-none">🎉</span>
-            <span className="ml-3 text-sm">Confetti</span>
-            <span className="text-white-black-700 ml-3 hidden text-sm md:block">
+            <span className="flex w-[26px] shrink-0 justify-center text-[23px] leading-none">
+                🎉
+            </span>
+            <span className="ml-2.5 truncate text-[15px] font-medium">
+                Confetti
+            </span>
+            <span className="text-white-black-700 ml-3.5 hidden text-[15px] md:block">
                 Raycast
+            </span>
+            <span className="text-white-black-700 ml-auto shrink-0 pl-3 text-sm">
+                Command
             </span>
         </div>
     );
