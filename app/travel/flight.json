@@ -78,5 +78,10 @@
         "from": "TPE",
         "to": "HKT",
         "tripType": "round-trip"
+    },
+    {
+        "from": "TPE",
+        "to": "NRT",
+        "tripType": "round-trip"
     }
 ]

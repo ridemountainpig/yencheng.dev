@@ -418,15 +418,23 @@ export default function Travel() {
                                                 : "bg-white-brown-300/80 hover:bg-white-brown-500/90",
                                         )}
                                     >
-                                        <div
-                                            className={cn(
-                                                "font-nunito text-sm font-bold tracking-wide",
-                                                isActive
-                                                    ? "text-white-brown-900"
-                                                    : "text-white-brown-900",
+                                        <div className="flex items-center justify-between gap-3">
+                                            <div
+                                                className={cn(
+                                                    "font-nunito text-sm font-bold tracking-wide",
+                                                    isActive
+                                                        ? "text-white-brown-900"
+                                                        : "text-white-brown-900",
+                                                )}
+                                            >
+                                                {from.city} {routeArrow}{" "}
+                                                {to.city}
+                                            </div>
+                                            {route.latest && (
+                                                <span className="bg-white-brown-700 text-white-brown-100 font-nunito shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase">
+                                                    Latest
+                                                </span>
                                             )}
-                                        >
-                                            {from.city} {routeArrow} {to.city}
                                         </div>
                                         <p
                                             className={cn(

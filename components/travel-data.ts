@@ -13,6 +13,10 @@ export type TravelFlightLeg = {
     tripType?: TravelTripType;
 };
 
+export type TravelMapRoute = FlightRouteData & {
+    latest?: boolean;
+};
+
 function endpointVisitKey(ref: TravelEndpoint): string {
     if (typeof ref === "string") {
         return `code:${ref.toUpperCase()}`;
@@ -61,7 +65,7 @@ export type TravelDashboard = {
     countriesVisited: number;
     /** Sum of great-circle km per leg × trip weight (round-trip = 2). */
     totalDistanceKm: number;
-    mapRoutes: FlightRouteData[];
+    mapRoutes: TravelMapRoute[];
 };
 
 export function buildTravelDashboard(legs: TravelFlightLeg[]): TravelDashboard {
@@ -90,8 +94,8 @@ export function buildTravelDashboard(legs: TravelFlightLeg[]): TravelDashboard {
     }
 
     const routeKeys = new Set<string>();
-    const mapRoutes: FlightRouteData[] = [];
-    for (const leg of legs) {
+    const mapRoutes: TravelMapRoute[] = [];
+    for (const leg of [...legs].reverse()) {
         const tripType: TravelTripType = leg.tripType ?? "one-way";
         const key = `${routePairKey(leg.from, leg.to)}|${tripType}`;
         if (routeKeys.has(key)) {
@@ -101,7 +105,12 @@ export function buildTravelDashboard(legs: TravelFlightLeg[]): TravelDashboard {
         const from =
             typeof leg.from === "string" ? leg.from.toUpperCase() : leg.from;
         const to = typeof leg.to === "string" ? leg.to.toUpperCase() : leg.to;
-        mapRoutes.push({ from, to, tripType });
+        mapRoutes.push({
+            from,
+            to,
+            tripType,
+            latest: mapRoutes.length === 0,
+        });
     }
 
     return {
