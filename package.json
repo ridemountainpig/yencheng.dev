@@ -21,6 +21,7 @@
         "canvas-confetti": "^1.9.4",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
+        "d3-geo": "^3.1.1",
         "embla-carousel-react": "^8.6.0",
         "framer-motion": "^12.23.26",
         "lucide-react": "^1.7.0",
@@ -31,14 +32,17 @@
         "react-dom": "^19.2.3",
         "rwdot": "^0.0.5",
         "tailwind-merge": "^3.4.0",
-        "tailwindcss-animate": "^1.0.7"
+        "tailwindcss-animate": "^1.0.7",
+        "topojson-client": "^3.1.0"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",
         "@tailwindcss/postcss": "^4.1.18",
+        "@types/d3-geo": "^3.1.1",
         "@types/node": "^25",
         "@types/react": "^19",
         "@types/react-dom": "^19",
+        "@types/topojson-client": "^3.1.5",
         "eslint": "^9",
         "eslint-config-next": "^16.0.10",
         "postcss": "^8",

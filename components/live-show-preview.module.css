@@ -1,0 +1,62 @@
+.preview {
+    position: fixed;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+    transition:
+        opacity 280ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 460ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.image {
+    overflow: hidden;
+    border: 1px solid var(--color-white-brown-600);
+    border-radius: 1rem;
+    background: var(--color-white-brown-100);
+    box-shadow: 0 18px 40px -14px rgb(71 32 19 / 28%);
+}
+
+/* The image itself gathers from a soft, expanded silhouette. Applying the
+   blur outside the rounded frame lets its edges diffuse into the page. */
+.preview[data-ready="false"] {
+    opacity: 0;
+    filter: blur(18px);
+    transform: translateY(8px) scale(1.055, 1.075);
+}
+
+.preview[data-state="closing"] {
+    opacity: 0;
+    filter: blur(18px);
+    transform: translateY(-12px) scale(1.055, 1.075);
+    pointer-events: none;
+    /* Keep enough opacity early in the exit to see the image dissolve. */
+    transition:
+        opacity 420ms cubic-bezier(0.4, 0, 0.7, 0.2),
+        filter 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@starting-style {
+    .preview {
+        opacity: 0;
+        filter: blur(18px);
+        transform: translateY(8px) scale(1.055, 1.075);
+    }
+}
+
+.preview[data-instant] {
+    transition: none;
+    filter: none;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .preview[data-state] {
+        transition: opacity 100ms ease-out;
+        filter: none;
+        transform: none;
+    }
+}

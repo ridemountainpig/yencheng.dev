@@ -1,0 +1,122 @@
+{
+    "venues": [
+        {
+            "name": "Legacy Taichung",
+            "city": "Taichung",
+            "coordinates": [24.17662410507861, 120.62362217873422]
+        },
+        {
+            "name": "Zepp New Taipei",
+            "city": "New Taipei",
+            "coordinates": [25.059794904537785, 121.44969061369092]
+        },
+        {
+            "name": "Legacy Taipei",
+            "city": "Taipei",
+            "coordinates": [25.045244078842938, 121.52963635786841]
+        },
+        {
+            "name": "SUB LIVE",
+            "city": "Taipei",
+            "coordinates": [25.05198677293742, 121.60000295417073]
+        },
+        {
+            "name": "Backstage Live",
+            "city": "Kaohsiung",
+            "coordinates": [22.616258236548877, 120.29238642711988]
+        },
+        {
+            "name": "文心森林公園",
+            "city": "Taichung",
+            "coordinates": [24.145187621537534, 120.64519891181727]
+        },
+        {
+            "name": "墾丁大灣遊憩區",
+            "city": "Pingtung",
+            "coordinates": [21.943984952940934, 120.79547238292533]
+        }
+    ],
+    "shows": [
+        {
+            "date": "2026-08-30",
+            "artist": "163braces",
+            "title": "小劇場：夏天的尾巴",
+            "venue": "Legacy Taichung",
+            "image": "/live/shows/2026-08-30-163braces.webp"
+        },
+        {
+            "date": "2026-08-15",
+            "artist": "Sabrina 胡恂舞",
+            "title": "《花皮 Florskyn》",
+            "venue": "Legacy Taichung",
+            "image": "/live/shows/2026-08-15-sabrina.webp"
+        },
+        {
+            "date": "2026-08-02",
+            "artist": "傻子與白痴 FOOL AND IDIOT",
+            "title": "《笨笨的事情 Foolish Things》",
+            "venue": "Legacy Taichung",
+            "image": "/live/shows/2026-08-02-fool-and-idiot.webp"
+        },
+        {
+            "date": "2026-07-25",
+            "artist": "公館青少年 GGteens",
+            "title": "《青少年之後》",
+            "venue": "Zepp New Taipei",
+            "image": "/live/shows/2026-07-25-ggteens.webp"
+        },
+        {
+            "date": "2026-04-10",
+            "artist": "VH (Vast & Hazy)",
+            "title": "RE:VH《邁行》",
+            "venue": "SUB LIVE",
+            "image": "/live/shows/2026-04-10-vast-and-hazy.webp"
+        },
+        {
+            "date": "2026-01-16",
+            "artist": "VH (Vast & Hazy)",
+            "title": "《Every Journey Leads Me Home——不趕路》",
+            "venue": "Legacy Taichung",
+            "image": "/live/shows/2026-01-16-vast-and-hazy.webp"
+        },
+        {
+            "date": "2025-12-20",
+            "artist": "南西肯恩 NeciKen",
+            "title": "《泥與花 Mud and Flowers》2025 X-mas",
+            "venue": "Legacy Taipei",
+            "image": "/live/shows/2025-12-20-neciken.webp"
+        },
+        {
+            "date": "2025-10-11",
+            "artist": "Various Artists",
+            "title": "2025 搖滾台中音樂節",
+            "venue": "文心森林公園"
+        },
+        {
+            "date": "2025-07-26",
+            "artist": "163braces",
+            "title": "《海螺記》造船計劃",
+            "venue": "Backstage Live",
+            "image": "/live/shows/2025-07-26-163braces.webp"
+        },
+        {
+            "date": "2025-04-03",
+            "artist": "Various Artists",
+            "title": "2025 台灣祭",
+            "venue": "墾丁大灣遊憩區"
+        },
+        {
+            "date": "2024-11-10",
+            "artist": "公館青少年 GGteens",
+            "title": "《我其實一點都不酷》",
+            "venue": "Legacy Taichung",
+            "image": "/live/shows/2024-11-10-ggteens.webp"
+        },
+        {
+            "date": "2024-10-26",
+            "artist": "Various Artists",
+            "title": "2024 搖滾台中音樂節",
+            "venue": "文心森林公園"
+        }
+    ]
+}

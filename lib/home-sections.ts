@@ -14,6 +14,7 @@ export const HOME_SECTIONS = [
     "home",
     "portfolio",
     "travel",
+    "live",
     "raycast",
     "footer",
 ] as const;

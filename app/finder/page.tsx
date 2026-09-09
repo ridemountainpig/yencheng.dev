@@ -159,7 +159,7 @@ export default function Finder() {
                             Github
                         </a>
                         <a
-                            href="https://www.linkedin.com/in/%E5%BD%A5%E6%88%90-%E6%9E%97-22948823a/"
+                            href="https://www.linkedin.com/in/iamyencheng/"
                             className="underline underline-offset-2"
                             target="_blank"
                             rel="noreferrer"

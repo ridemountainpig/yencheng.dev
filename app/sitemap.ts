@@ -18,6 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date(),
         },
         {
+            url: "https://yencheng.dev/live",
+            priority: 0.85,
+            lastModified: new Date(),
+        },
+        {
             url: "https://yencheng.dev/raycast",
             priority: 0.85,
             lastModified: new Date(),

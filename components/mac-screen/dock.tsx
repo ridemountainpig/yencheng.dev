@@ -34,7 +34,7 @@ export default function Dock() {
     const handleItemClick = useCallback(
         (item: DockItem) => {
             if (item.label === "My Raycast") {
-                api?.scrollTo(3);
+                api?.scrollTo(4);
                 return;
             }
 

@@ -5,6 +5,7 @@ import Banner from "@/components/banner";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import HomeCarousel from "@/components/home-carousel";
+import Live from "@/components/live";
 import Portfolio from "@/components/portfolio";
 import Raycast from "@/components/raycast";
 import Travel from "@/components/travel";
@@ -44,6 +45,20 @@ const SECTION_METADATA: Record<string, Metadata> = {
             description:
                 "Travel map and flight history — places visited and routes around the world.",
             url: "https://yencheng.dev/travel",
+        },
+    },
+    live: {
+        title: "Live Shows",
+        description:
+            "A timeline and interactive Taiwan venue map of live shows attended by Yen Cheng Lin.",
+        alternates: {
+            canonical: "https://yencheng.dev/live",
+        },
+        openGraph: {
+            title: "Live Shows — Yen Cheng Lin",
+            description:
+                "Live show memories organized by date and venue across Taiwan.",
+            url: "https://yencheng.dev/live",
         },
     },
     raycast: {
@@ -98,6 +113,9 @@ export default function Home() {
                     </CarouselItem>
                     <CarouselItem className="flex h-screen max-h-screen flex-col overflow-hidden">
                         <Travel></Travel>
+                    </CarouselItem>
+                    <CarouselItem className="flex h-screen max-h-screen flex-col overflow-hidden">
+                        <Live />
                     </CarouselItem>
                     <CarouselItem>
                         <Raycast></Raycast>
