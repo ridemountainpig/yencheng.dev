@@ -15,7 +15,10 @@ export type TravelFlightLeg = {
 
 export type TravelMapRoute = FlightRouteData & {
     latest?: boolean;
+    routeKey: string;
 };
+
+export const KM_TO_MI = 0.621371;
 
 function endpointVisitKey(ref: TravelEndpoint): string {
     if (typeof ref === "string") {
@@ -27,6 +30,11 @@ function endpointVisitKey(ref: TravelEndpoint): string {
 
 function routePairKey(from: TravelEndpoint, to: TravelEndpoint): string {
     return `${endpointVisitKey(from)}→${endpointVisitKey(to)}`;
+}
+
+/** Identifies a route on the globe; board rows and map routes share it. */
+export function travelRouteKey(leg: TravelFlightLeg): string {
+    return `${routePairKey(leg.from, leg.to)}|${leg.tripType ?? "one-way"}`;
 }
 
 function tripLegWeight(leg: TravelFlightLeg): number {
@@ -97,7 +105,7 @@ export function buildTravelDashboard(legs: TravelFlightLeg[]): TravelDashboard {
     const mapRoutes: TravelMapRoute[] = [];
     for (const leg of [...legs].reverse()) {
         const tripType: TravelTripType = leg.tripType ?? "one-way";
-        const key = `${routePairKey(leg.from, leg.to)}|${tripType}`;
+        const key = travelRouteKey(leg);
         if (routeKeys.has(key)) {
             continue;
         }
@@ -110,6 +118,7 @@ export function buildTravelDashboard(legs: TravelFlightLeg[]): TravelDashboard {
             to,
             tripType,
             latest: mapRoutes.length === 0,
+            routeKey: key,
         });
     }
 
@@ -120,4 +129,46 @@ export function buildTravelDashboard(legs: TravelFlightLeg[]): TravelDashboard {
         totalDistanceKm,
         mapRoutes,
     };
+}
+
+export type FlightLogRow = {
+    /** 1-based position in flight.json, oldest first. */
+    number: number;
+    /** IATA code, or "GPS" for a coordinate endpoint. */
+    from: string;
+    to: string;
+    fromLabel: string;
+    toLabel: string;
+    tripType: TravelTripType;
+    distanceKm: number | null;
+    routeKey: string;
+    latest: boolean;
+};
+
+function endpointCode(ref: TravelEndpoint): string {
+    return typeof ref === "string" ? ref.toUpperCase() : "GPS";
+}
+
+function endpointLabel(ref: TravelEndpoint): string {
+    if (typeof ref !== "string") {
+        return `${ref[1].toFixed(1)}°, ${ref[0].toFixed(1)}°`;
+    }
+    return getAirportInfo(ref.toUpperCase())?.city ?? ref.toUpperCase();
+}
+
+/** Every leg in flight.json, newest first, for the departures-board log. */
+export function buildFlightLog(legs: TravelFlightLeg[]): FlightLogRow[] {
+    return legs
+        .map((leg, index) => ({
+            number: index + 1,
+            from: endpointCode(leg.from),
+            to: endpointCode(leg.to),
+            fromLabel: endpointLabel(leg.from),
+            toLabel: endpointLabel(leg.to),
+            tripType: leg.tripType ?? "one-way",
+            distanceKm: legGreatCircleKm(leg),
+            routeKey: travelRouteKey(leg),
+            latest: index === legs.length - 1,
+        }))
+        .reverse();
 }

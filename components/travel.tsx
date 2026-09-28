@@ -3,17 +3,18 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 
+import FlightBoard from "@/components/flight-board";
 import PageTitle from "@/components/page-title";
 import {
     FlightRoutes,
-    getAirportInfo,
     resolveAirport,
-    type AirportRef,
     type FlightRouteData,
 } from "@/components/ui/flight";
 import { Map, MapControls, useMap } from "@/components/ui/map";
 import {
+    buildFlightLog,
     buildTravelDashboard,
+    KM_TO_MI,
     TRAVEL_FLIGHT_LEGS,
 } from "@/components/travel-data";
 import { cn } from "@/lib/utils";
@@ -99,44 +100,6 @@ function resolveRouteFocusViewport(route: FlightRouteData, widthPx: number) {
         ] as [number, number],
         zoom: clamp(zoom, 1.45, 4.5),
     };
-}
-
-function describeAirport(ref: AirportRef) {
-    if (typeof ref === "string") {
-        const info = getAirportInfo(ref.toUpperCase());
-        if (info) {
-            return {
-                code: info.code,
-                city: info.city,
-                country: info.country,
-            };
-        }
-
-        return {
-            code: ref.toUpperCase(),
-            city: ref.toUpperCase(),
-            country: "",
-        };
-    }
-
-    return {
-        code: "GPS",
-        city: `${ref[1].toFixed(1)}°, ${ref[0].toFixed(1)}°`,
-        country: "Custom point",
-    };
-}
-
-function describeRouteRegion(
-    from: ReturnType<typeof describeAirport>,
-    to: ReturnType<typeof describeAirport>,
-) {
-    if (!from.country && !to.country) {
-        return "";
-    }
-    if (from.country === to.country) {
-        return from.country;
-    }
-    return [from.country, to.country].filter(Boolean).join(" · ");
 }
 
 function TravelGlobeViewportSync({
@@ -243,8 +206,7 @@ function TravelGlobeViewportSync({
 }
 
 const dashboard = buildTravelDashboard(TRAVEL_FLIGHT_LEGS);
-
-const KM_TO_MI = 0.621371;
+const flightLog = buildFlightLog(TRAVEL_FLIGHT_LEGS);
 
 const STAT_CARDS = [
     {
@@ -301,6 +263,15 @@ export default function Travel() {
             ? null
             : (dashboard.mapRoutes[selectedRouteIndex] ?? null);
 
+    const selectRoute = useCallback((routeKey: string) => {
+        const index = dashboard.mapRoutes.findIndex(
+            (route) => route.routeKey === routeKey,
+        );
+        if (index >= 0) {
+            setSelectedRouteIndex(index);
+        }
+    }, []);
+
     const mapRoutes = useMemo(
         () =>
             dashboard.mapRoutes.map((route, index) => {
@@ -328,7 +299,7 @@ export default function Travel() {
         <div className="text-white-black-900 bg-white-black-50 flex h-full min-h-0 w-full flex-col pt-6">
             <PageTitle title="My Travel" />
             <div className="no-scrollbar flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-4 pb-10 sm:px-8">
-                <div className="mx-auto mt-4 grid w-full max-w-6xl gap-5 sm:mt-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-stretch">
+                <div className="mx-auto mt-4 grid w-full max-w-6xl gap-5 sm:mt-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-stretch">
                     <div
                         data-carousel-no-drag
                         className={cn(
@@ -373,89 +344,15 @@ export default function Travel() {
                         </Map>
                     </div>
 
-                    <div
-                        data-carousel-no-drag
+                    <FlightBoard
+                        rows={flightLog}
+                        selectedRouteKey={selectedRoute?.routeKey ?? null}
+                        onSelectRoute={selectRoute}
                         className={cn(
-                            "border-white-brown-600/70 bg-white-brown-100/90 flex h-[26rem] min-h-0 flex-col overflow-hidden rounded-2xl border shadow-sm sm:h-[30rem]",
+                            "h-[26rem] sm:h-[30rem]",
                             DESKTOP_PANEL_HEIGHT_CLASS,
                         )}
-                    >
-                        <div className="border-white-brown-600/70 border-b px-4 py-3">
-                            <div>
-                                <p className="text-white-brown-900 font-nunito text-sm font-bold tracking-wide">
-                                    Flight Routes
-                                </p>
-                                <p className="text-white-brown-800 font-nunito text-xs">
-                                    Click a route to focus the globe.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="no-scrollbar flex flex-col gap-2 overflow-y-auto p-3">
-                            {dashboard.mapRoutes.map((route, index) => {
-                                const from = describeAirport(route.from);
-                                const to = describeAirport(route.to);
-                                const isActive = index === selectedRouteIndex;
-                                const routeArrow =
-                                    route.tripType === "round-trip" ? "↔" : "→";
-                                const routeRegion = describeRouteRegion(
-                                    from,
-                                    to,
-                                );
-
-                                return (
-                                    <button
-                                        key={`${from.code}-${to.code}-${index}`}
-                                        type="button"
-                                        onClick={() =>
-                                            setSelectedRouteIndex(index)
-                                        }
-                                        aria-pressed={isActive}
-                                        className={cn(
-                                            "border-white-brown-600/70 rounded-xl border px-4 py-3 text-left transition-all duration-200",
-                                            isActive
-                                                ? "bg-white-brown-500/90 border-white-brown-700 shadow-sm"
-                                                : "bg-white-brown-300/80 hover:bg-white-brown-500/90",
-                                        )}
-                                    >
-                                        <div className="flex items-center justify-between gap-3">
-                                            <div
-                                                className={cn(
-                                                    "font-nunito text-sm font-bold tracking-wide",
-                                                    isActive
-                                                        ? "text-white-brown-900"
-                                                        : "text-white-brown-900",
-                                                )}
-                                            >
-                                                {from.city} {routeArrow}{" "}
-                                                {to.city}
-                                            </div>
-                                            {route.latest && (
-                                                <span className="bg-white-brown-700 text-white-brown-100 font-nunito shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase">
-                                                    Latest
-                                                </span>
-                                            )}
-                                        </div>
-                                        <p
-                                            className={cn(
-                                                "font-nunito mt-2 text-xs",
-                                                isActive
-                                                    ? "text-white-brown-800"
-                                                    : "text-white-brown-800",
-                                            )}
-                                        >
-                                            {from.code}
-                                            {` ${routeArrow} `}
-                                            {to.code}
-                                            {routeRegion
-                                                ? ` · ${routeRegion}`
-                                                : ""}
-                                        </p>
-                                    </button>
-                                );
-                            })}
-                        </div>
-                    </div>
+                    />
                 </div>
 
                 <div className="mx-auto grid w-full max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
