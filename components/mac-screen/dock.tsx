@@ -1,20 +1,23 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue, type MotionStyle } from "framer-motion";
 import { DockItem, InfoStyle } from "@/types/type";
 import Screen from "@/components/mac-screen/screen";
 import DockItemButton from "@/components/mac-screen/dockItemButton";
-import { useCarousel } from "@/components/ui/carousel";
+import { useHomeScroll } from "@/components/home-scroller";
 
 export default function Dock() {
-    const { api } = useCarousel();
+    const { scrollToSection } = useHomeScroll();
 
     const mouseX = useMotionValue(Infinity);
     const [magnify, setMagnify] = useState(false);
 
     useEffect(() => {
-        const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+        // Magnify grows icons from a fixed 45px, which only fits from sm up.
+        const mq = window.matchMedia(
+            "(hover: hover) and (pointer: fine) and (min-width: 640px)",
+        );
         setMagnify(mq.matches);
         const onChange = (e: MediaQueryListEvent) => setMagnify(e.matches);
         mq.addEventListener("change", onChange);
@@ -34,7 +37,7 @@ export default function Dock() {
     const handleItemClick = useCallback(
         (item: DockItem) => {
             if (item.label === "My Raycast") {
-                api?.scrollTo(4);
+                scrollToSection("raycast");
                 return;
             }
 
@@ -55,7 +58,7 @@ export default function Dock() {
                 },
             });
         },
-        [api],
+        [scrollToSection],
     );
 
     const dockItems: DockItem[] = [
@@ -200,7 +203,14 @@ export default function Dock() {
             <motion.div
                 onMouseMove={(e) => mouseX.set(e.clientX)}
                 onMouseLeave={() => mouseX.set(Infinity)}
-                className="dock-panel liquid-glass absolute bottom-2 left-1/2 flex h-14 w-max -translate-x-1/2 transform items-end gap-x-1 rounded-[1.25rem] p-2 sm:h-[69px] sm:gap-x-2 sm:rounded-3xl sm:p-3"
+                style={
+                    {
+                        // Below sm, icons shrink so the whole dock fits the
+                        // screen frame with 0.5rem to spare on each side.
+                        "--dock-icon": `min(2.5rem, calc((100cqw - 2rem - ${dockItems.length - 1} * 0.25rem) / ${dockItems.length}))`,
+                    } as MotionStyle
+                }
+                className="dock-panel liquid-glass absolute bottom-2 left-1/2 flex h-[calc(var(--dock-icon)+1rem)] w-max -translate-x-1/2 transform items-end gap-x-1 rounded-[1.25rem] p-2 sm:h-[69px] sm:gap-x-2 sm:rounded-3xl sm:p-3"
             >
                 {dockItems.map((item) => (
                     <DockItemButton

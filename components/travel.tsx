@@ -301,7 +301,6 @@ export default function Travel() {
             <div className="no-scrollbar flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-4 pb-10 sm:px-8">
                 <div className="mx-auto mt-4 grid w-full max-w-6xl gap-5 sm:mt-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-stretch">
                     <div
-                        data-carousel-no-drag
                         className={cn(
                             "border-white-brown-600/60 relative mx-auto aspect-square w-full max-w-[min(48rem,85svh)] overflow-hidden rounded-2xl border shadow-md lg:aspect-auto lg:max-w-none",
                             DESKTOP_PANEL_HEIGHT_CLASS,
@@ -317,6 +316,9 @@ export default function Travel() {
                             minZoom={0.5}
                             maxZoom={6}
                             scrollZoom={true}
+                            // Page scroll passes over the globe; zooming takes
+                            // ⌘/Ctrl + scroll, panning on touch takes two fingers.
+                            cooperativeGestures={true}
                             dragRotate={false}
                             touchPitch={false}
                         >

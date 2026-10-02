@@ -105,11 +105,24 @@ export function useLiveShowPreview(events: LiveShowEvent[]) {
                 dismiss();
             }
         };
+        const onScroll = (event: Event) => {
+            // The timeline re-resolves its own hovered row; any outer scroll
+            // (the page moving to another section) carries the row away.
+            if (
+                event.target instanceof Element &&
+                event.target.hasAttribute("data-live-timeline")
+            ) {
+                return;
+            }
+            dismiss();
+        };
         window.addEventListener("resize", dismiss);
         window.addEventListener("keydown", onKeyDown);
+        window.addEventListener("scroll", onScroll, true);
         return () => {
             window.removeEventListener("resize", dismiss);
             window.removeEventListener("keydown", onKeyDown);
+            window.removeEventListener("scroll", onScroll, true);
         };
     }, [isOpen]);
 
@@ -141,6 +154,7 @@ export function useLiveShowPreview(events: LiveShowEvent[]) {
 
     return {
         timelineProps: {
+            "data-live-timeline": true,
             onPointerDown: (event: React.PointerEvent<HTMLDivElement>) => {
                 if (event.pointerType !== "mouse") {
                     pointer.current = null;

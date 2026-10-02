@@ -22,6 +22,19 @@ export const HOME_SECTIONS = [
 export type HomeSection = (typeof HOME_SECTIONS)[number];
 type QueryValue = string | string[] | undefined;
 
+/** Names shown in the section nav and read out for each section landmark. */
+export const HOME_SECTION_LABELS: Record<HomeSection, string> = {
+    home: "Home",
+    portfolio: "Portfolio",
+    travel: "Travel",
+    live: "Live Shows",
+    raycast: "Raycast",
+    footer: "Contact",
+};
+
+/** Element id of the vertical scroller that holds every home section. */
+export const HOME_SCROLLER_ID = "home-scroller";
+
 function normalizeQueryValue(value: QueryValue) {
     if (Array.isArray(value)) {
         return value[0]?.trim().toLowerCase();

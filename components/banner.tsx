@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CircleArrowRight, ArrowUp } from "lucide-react";
-import { useCarousel } from "@/components/ui/carousel";
+import { CircleArrowDown, ArrowUp } from "lucide-react";
+import { useHomeScroll } from "@/components/home-scroller";
 
 export default function Banner() {
-    const { scrollNext } = useCarousel();
+    const { scrollNext } = useHomeScroll();
 
     return (
         <div className="font-nunito text-white-black-900 flex h-[90vh] w-full items-center justify-center tracking-wider select-none">
@@ -69,22 +69,23 @@ export default function Banner() {
                 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 1.15 }}
             >
-                <div
+                <button
+                    type="button"
                     className="bg-white-brown-500 text-white-brown-800 flex h-10 w-fit cursor-pointer items-center justify-center gap-x-2 rounded-full px-4 text-sm sm:text-xl"
                     onClick={scrollNext}
                 >
                     <span>About Me</span>
-                    <CircleArrowRight
+                    <CircleArrowDown
                         strokeWidth={2.25}
                         size={24}
                         className="hidden sm:block"
                     />
-                    <CircleArrowRight
+                    <CircleArrowDown
                         strokeWidth={2.25}
                         size={20}
                         className="sm:hidden"
                     />
-                </div>
+                </button>
             </motion.div>
             <motion.div
                 className="absolute bottom-5 flex w-full justify-center"

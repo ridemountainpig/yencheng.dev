@@ -13,10 +13,10 @@ export default async function Raycast() {
     ]);
 
     return (
-        <div className="bg-white-black-50 text-white-black-900 h-full w-full pt-6">
+        <div className="bg-white-black-50 text-white-black-900 flex h-full w-full flex-col pt-6">
             <TabKeyHandler />
             <PageTitle title="My Raycast Extensions"></PageTitle>
-            <div className="-mt-6 flex h-full w-full items-center justify-center px-1">
+            <div className="flex min-h-0 w-full flex-1 items-center justify-center px-1 pb-6">
                 <RaycastExtensions
                     extensions={extensions}
                     contributionExtensions={contributionExtensions}

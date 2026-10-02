@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 
 import Banner from "@/components/banner";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import HomeCarousel from "@/components/home-carousel";
+import HomeScroller, { HomeScrollSection } from "@/components/home-scroller";
 import Live from "@/components/live";
 import Portfolio from "@/components/portfolio";
 import Raycast from "@/components/raycast";
 import Travel from "@/components/travel";
-import { CarouselItem } from "@/components/ui/carousel";
-import { HOME_SECTIONS } from "@/lib/home-sections";
+import {
+    getHomeSectionFromIndex,
+    getHomeSectionIndexFromQuery,
+    HOME_SCROLLER_ID,
+    HOME_SECTIONS,
+    type HomeSection,
+} from "@/lib/home-sections";
 
 interface PageProps {
     params: Promise<{ section?: string[] }>;
@@ -85,6 +89,24 @@ const SECTION_METADATA: Record<string, Metadata> = {
     },
 };
 
+const HOME_TITLE = "Yen Cheng Lin — Full-Stack Developer & Raycast Ambassador";
+
+/** Mirrors the layout's "%s — Yen Cheng Lin" template for client-side swaps. */
+const SECTION_TITLES = Object.fromEntries(
+    HOME_SECTIONS.map((section) => {
+        const title = SECTION_METADATA[section]?.title;
+        return [
+            section,
+            typeof title === "string" ? `${title} — Yen Cheng Lin` : HOME_TITLE,
+        ];
+    }),
+) as Record<HomeSection, string>;
+
+/** Scrolls a deep-linked section into place before first paint. */
+function initialScrollScript(section: HomeSection) {
+    return `(()=>{const s=document.getElementById("${HOME_SCROLLER_ID}");const t=s&&s.querySelector('[data-home-section="${section}"]');if(t)s.scrollTop=t.offsetTop})()`;
+}
+
 export async function generateMetadata({
     params,
 }: PageProps): Promise<Metadata> {
@@ -99,32 +121,45 @@ export function generateStaticParams() {
     }));
 }
 
-export default function Home() {
+export default async function Home({ params }: PageProps) {
+    const { section } = await params;
+    const initialSection = getHomeSectionFromIndex(
+        getHomeSectionIndexFromQuery(section?.[0]),
+    );
+
     return (
-        <main className="h-screen w-full overflow-hidden">
-            <Suspense fallback={null}>
-                <HomeCarousel>
-                    <CarouselItem>
-                        <Header></Header>
-                        <Banner></Banner>
-                    </CarouselItem>
-                    <CarouselItem>
-                        <Portfolio></Portfolio>
-                    </CarouselItem>
-                    <CarouselItem className="flex h-screen max-h-screen flex-col overflow-hidden">
-                        <Travel></Travel>
-                    </CarouselItem>
-                    <CarouselItem className="flex h-screen max-h-screen flex-col overflow-hidden">
-                        <Live />
-                    </CarouselItem>
-                    <CarouselItem>
-                        <Raycast></Raycast>
-                    </CarouselItem>
-                    <CarouselItem>
-                        <Footer></Footer>
-                    </CarouselItem>
-                </HomeCarousel>
-            </Suspense>
+        <main className="w-full">
+            <HomeScroller
+                initialSection={initialSection}
+                titles={SECTION_TITLES}
+            >
+                <HomeScrollSection section="home">
+                    <Header></Header>
+                    <Banner></Banner>
+                </HomeScrollSection>
+                <HomeScrollSection section="portfolio">
+                    <Portfolio></Portfolio>
+                </HomeScrollSection>
+                <HomeScrollSection section="travel">
+                    <Travel></Travel>
+                </HomeScrollSection>
+                <HomeScrollSection section="live">
+                    <Live />
+                </HomeScrollSection>
+                <HomeScrollSection section="raycast">
+                    <Raycast></Raycast>
+                </HomeScrollSection>
+                <HomeScrollSection section="footer">
+                    <Footer></Footer>
+                </HomeScrollSection>
+            </HomeScroller>
+            {initialSection !== "home" && (
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: initialScrollScript(initialSection),
+                    }}
+                />
+            )}
         </main>
     );
 }

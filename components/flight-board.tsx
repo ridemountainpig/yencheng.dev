@@ -1,7 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState, type RefObject } from "react";
-import { ArrowLeftRight, ArrowRight } from "lucide-react";
+import {
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+    type RefObject,
+} from "react";
+import { ArrowLeftRight, ArrowRight, RotateCcw } from "lucide-react";
 
 import { KM_TO_MI, type FlightLogRow } from "@/components/travel-data";
 import { cn } from "@/lib/utils";
@@ -84,14 +90,31 @@ function prefersReducedMotion(): boolean {
 }
 
 /**
- * Starts blank (so the board never flashes its final text), then runs a
- * one-shot clock the first time it's in view. `null` means "final text".
+ * Starts blank (so the board never flashes its final text), then runs the
+ * clock the first time it's in view; `replay` blanks the board and runs it
+ * again. A `null` clock means "final text".
  */
 function useFlapClock(
     ref: RefObject<HTMLElement | null>,
     durationMs: number,
-): number | null {
+): { clock: number | null; replay: () => void } {
     const [clock, setClock] = useState<number | null>(ARMED);
+    const frameRef = useRef(0);
+
+    const run = useCallback(() => {
+        cancelAnimationFrame(frameRef.current);
+        const startedAt = performance.now();
+        const frame = (now: number) => {
+            const elapsed = now - startedAt;
+            if (elapsed >= durationMs) {
+                setClock(null);
+                return;
+            }
+            setClock(elapsed);
+            frameRef.current = requestAnimationFrame(frame);
+        };
+        frameRef.current = requestAnimationFrame(frame);
+    }, [durationMs]);
 
     useEffect(() => {
         const element = ref.current;
@@ -100,25 +123,13 @@ function useFlapClock(
             return () => cancelAnimationFrame(frameId);
         }
 
-        let frameId = 0;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (!entry.isIntersecting) {
                     return;
                 }
                 observer.disconnect();
-
-                const startedAt = performance.now();
-                const frame = (now: number) => {
-                    const elapsed = now - startedAt;
-                    if (elapsed >= durationMs) {
-                        setClock(null);
-                        return;
-                    }
-                    setClock(elapsed);
-                    frameId = requestAnimationFrame(frame);
-                };
-                frameId = requestAnimationFrame(frame);
+                run();
             },
             { threshold: 0.25 },
         );
@@ -126,11 +137,19 @@ function useFlapClock(
 
         return () => {
             observer.disconnect();
-            cancelAnimationFrame(frameId);
+            cancelAnimationFrame(frameRef.current);
         };
-    }, [ref, durationMs]);
+    }, [ref, run]);
 
-    return clock;
+    const replay = useCallback(() => {
+        if (prefersReducedMotion()) {
+            return;
+        }
+        setClock(ARMED);
+        run();
+    }, [run]);
+
+    return { clock, replay };
 }
 
 function Flap({
@@ -231,7 +250,7 @@ export default function FlightBoard({
         (tilesPerRow - 1) * TILE_STAGGER_MS +
         SPIN_MS +
         SETTLE_MS;
-    const clock = useFlapClock(listRef, durationMs);
+    const { clock, replay } = useFlapClock(listRef, durationMs);
 
     // One lit row: the entry you tapped, or, when the route was picked on
     // the globe, the most recent trip on that route.
@@ -271,7 +290,6 @@ export default function FlightBoard({
     return (
         <section
             aria-label="Flight log"
-            data-carousel-no-drag
             className={cn(
                 "@container flex min-h-0 flex-col overflow-hidden rounded-2xl border border-black/40 bg-[#1d1815] shadow-md",
                 className,
@@ -280,10 +298,26 @@ export default function FlightBoard({
             <div className="shrink-0 border-b border-white/10 px-4 py-3">
                 <div className="font-nunito flex items-center justify-between gap-3 text-xs tracking-[0.18em] uppercase">
                     <span className="text-[#e6d8cc]">Flight Log</span>
-                    <span className="flex items-center gap-1.5 text-[10px] text-[#f2b35f]">
-                        <span className="size-1.5 rounded-full bg-[#f2b35f]" />
-                        Latest
-                    </span>
+                    <div className="flex items-center gap-3">
+                        <span className="flex items-center gap-1.5 text-[10px] text-[#f2b35f]">
+                            <span className="size-1.5 rounded-full bg-[#f2b35f]" />
+                            Latest
+                        </span>
+                        {/* Hidden under reduced motion: the board never flips there. */}
+                        <button
+                            type="button"
+                            onClick={replay}
+                            aria-label="Replay the flip animation"
+                            title="Replay"
+                            className="relative -my-0.5 flex size-5 cursor-pointer items-center justify-center rounded-full border border-white/15 text-[#e6d8cc] transition-[background-color,color,scale] duration-150 ease-out after:absolute after:-inset-3 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f2b35f] active:scale-[0.92] motion-reduce:hidden"
+                        >
+                            <RotateCcw
+                                aria-hidden
+                                strokeWidth={2.5}
+                                className="size-3"
+                            />
+                        </button>
+                    </div>
                 </div>
                 <p className="font-nunito text-white-brown-700 mt-1 text-xs">
                     {rows.length} trips · Tap one to focus the globe.

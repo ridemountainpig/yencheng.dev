@@ -617,7 +617,6 @@ export default function Live() {
             <div className="no-scrollbar flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-4 pb-10 sm:px-8">
                 <div className="mx-auto mt-4 grid w-full max-w-6xl gap-5 sm:mt-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-stretch">
                     <div
-                        data-carousel-no-drag
                         className={cn(
                             "border-white-brown-600/60 relative mx-auto h-[25rem] w-full overflow-hidden rounded-2xl border shadow-md sm:h-[32rem] lg:max-w-none",
                             DESKTOP_PANEL_HEIGHT_CLASS,
@@ -631,7 +630,6 @@ export default function Live() {
                     </div>
 
                     <div
-                        data-carousel-no-drag
                         className={cn(
                             "border-white-brown-600/70 bg-white-brown-100/90 flex h-[30rem] min-h-0 flex-col overflow-hidden rounded-2xl border shadow-sm",
                             DESKTOP_PANEL_HEIGHT_CLASS,

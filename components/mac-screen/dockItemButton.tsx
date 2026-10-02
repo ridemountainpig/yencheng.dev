@@ -55,7 +55,7 @@ export default function DockItemButton({
             <motion.img
                 ref={ref}
                 style={animated ? { width } : undefined}
-                className={`${item.className} aspect-square w-10 shrink-0 object-contain transition-[filter] duration-100 group-active:brightness-75 sm:w-[45px]`}
+                className={`${item.className} aspect-square w-(--dock-icon) shrink-0 object-contain transition-[filter] duration-100 group-active:brightness-75 sm:w-[45px]`}
                 src={item.src}
                 alt={item.alt}
                 draggable={false}
@@ -77,7 +77,7 @@ export default function DockItemButton({
     );
 
     const buttonClassName =
-        "group relative flex h-10 shrink-0 items-end justify-center rounded-xl focus-visible:ring-2 focus-visible:ring-sky-400/70 focus-visible:outline-none sm:h-[45px]";
+        "group relative flex h-(--dock-icon) shrink-0 items-end justify-center rounded-xl focus-visible:ring-2 focus-visible:ring-sky-400/70 focus-visible:outline-none sm:h-[45px]";
 
     return item.link ? (
         <a
