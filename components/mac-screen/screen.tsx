@@ -44,7 +44,7 @@ export default function Screen({
         .replace(/^\//, "");
 
     return (
-        <div className="shadow-white-brown-600 relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-white shadow-2xl select-none sm:shadow-none">
+        <div className="border-white-brown-600/60 relative flex h-full w-full flex-col overflow-hidden rounded-2xl border bg-white shadow-md select-none sm:border-0 sm:shadow-none">
             <div className="hidden w-full sm:block">
                 <div className="flex h-12 w-full items-center justify-between bg-[#F9FBFD] px-6 opacity-85">
                     <div className="flex w-36 items-center justify-center gap-2">
@@ -80,7 +80,7 @@ export default function Screen({
 
             {showInfo && (
                 <div
-                    className={`no-scrollbar absolute top-[53%] left-1/2 h-[65vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-scroll rounded-2xl border-8 ${style?.border}`}
+                    className={`no-scrollbar absolute top-[53%] left-1/2 h-[65vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-scroll rounded-2xl border-8 pointer-fine:overscroll-contain ${style?.border}`}
                 >
                     <div className="absolute top-4 right-4 z-10">
                         <button
@@ -109,10 +109,16 @@ export default function Screen({
                 </div>
             )}
 
-            <div className="w-full grow">
+            {/* With a mouse or trackpad, scrolling past the end of the embedded
+                page stops at this window instead of carrying the home page
+                along. The wrapper joins the scroll chain because the iframe
+                overhangs it by 1px, and overscroll-contain ends the chain
+                there. Touch keeps chaining, so a finger resting on the window
+                can still scroll past it. */}
+            <div className="no-scrollbar w-full grow pointer-fine:overflow-y-auto pointer-fine:overscroll-contain">
                 <iframe
                     src={url}
-                    className="h-full w-full border-none"
+                    className="h-full w-full border-none pointer-fine:h-[calc(100%+1px)]"
                 ></iframe>
             </div>
         </div>

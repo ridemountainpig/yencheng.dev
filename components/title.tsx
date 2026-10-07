@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 
 interface TitleProps {
     title: string;
@@ -15,12 +16,23 @@ export default function Title({
     textStyle = "",
     as: Tag = "span",
 }: TitleProps) {
+    const ref = useRef<HTMLDivElement>(null);
+    // Every home section mounts at once, so the underline draws when the
+    // title scrolls into view rather than on mount, when most are off screen.
+    // Watch the whole title: the underline itself starts at zero width, and
+    // the browser cannot reliably tell whether a zero-width box is on screen.
+    const inView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
+    const reducedMotion = useReducedMotion();
+
     return (
-        <div className="relative inline-block overflow-hidden select-none">
+        <div
+            ref={ref}
+            className="relative inline-block overflow-hidden select-none"
+        >
             <motion.span
                 className={`absolute bottom-1 left-0 h-4 w-full ${bgColor} opacity-90`}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
+                initial={reducedMotion ? false : { scaleX: 0 }}
+                animate={inView ? { scaleX: 1 } : undefined}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 style={{ transformOrigin: "left" }}
             ></motion.span>

@@ -1,5 +1,10 @@
 import type { AirportRef, FlightRouteData } from "@/components/ui/flight";
-import { getAirportInfo, resolveAirport } from "@/components/ui/flight";
+// The airport helpers come from the MapLibre-free module so the home page
+// bundle does not pull in the map.
+import {
+    getAirportInfo,
+    resolveAirport,
+} from "@/components/ui/flight-airports-utils";
 
 import travelFlightsJson from "@/app/travel/flight.json";
 

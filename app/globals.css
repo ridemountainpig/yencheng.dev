@@ -105,9 +105,34 @@
     scrollbar-width: none; /* Firefox */
 }
 
-@layer utilities {
-    body {
-        font-family: Arial, Helvetica, sans-serif;
+/* Hero entrance. Plain CSS so it plays from the first paint, before React
+   hydrates. --hero-rise sets how far an element travels up. */
+.hero-rise {
+    animation: hero-rise 600ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.hero-underline {
+    transform-origin: left;
+    animation: hero-underline 500ms cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+@keyframes hero-rise {
+    from {
+        opacity: 0;
+        transform: translateY(var(--hero-rise, 24px));
+    }
+}
+
+@keyframes hero-underline {
+    from {
+        transform: scaleX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-rise,
+    .hero-underline {
+        animation: none;
     }
 }
 
@@ -186,8 +211,20 @@
     * {
         @apply border-border;
     }
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
     body {
         @apply bg-background text-foreground;
+    }
+    ::selection {
+        background-color: var(--color-white-brown-600);
+        color: var(--color-white-brown-950);
+    }
+    /* Default keyboard focus ring; components can still restyle it */
+    :focus-visible {
+        outline: 2px solid var(--color-white-brown-800);
+        outline-offset: 2px;
     }
 }
 

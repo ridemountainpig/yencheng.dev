@@ -1,0 +1,13 @@
+version: 2
+updates:
+    # Needs the text lockfile (bun.lock); Dependabot cannot read bun.lockb.
+    - package-ecosystem: "bun"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+      groups:
+          # One PR for routine bumps; majors still arrive one by one.
+          minor-and-patch:
+              update-types:
+                  - "minor"
+                  - "patch"

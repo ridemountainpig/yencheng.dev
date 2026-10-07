@@ -9,8 +9,10 @@ import {
     MapControls,
     useMap,
 } from "@/components/ui/map";
-import { ChevronLeft, ChevronRight, Maximize, X } from "lucide-react";
-import { useState, useCallback } from "react";
+import { ChevronLeft, ChevronRight, Maximize } from "lucide-react";
+import { useState, useCallback, useRef } from "react";
+import { cn } from "@/lib/utils";
+import PhotoLightbox, { type Size } from "./photo-lightbox";
 import images from "./images.json";
 
 type ImageData = {
@@ -21,25 +23,24 @@ type ImageData = {
     longitude?: number;
 };
 
+type FullscreenRequest = {
+    data: ImageData;
+    imageIndex: number;
+    /** The popup card the photo zooms out of. */
+    origin: HTMLElement | null;
+    size?: Size;
+    /** Points the popup at the photo the lightbox closed on. */
+    syncIndex: (index: number) => void;
+};
+
 export default function PhotoPage() {
-    const [fullscreenImage, setFullscreenImage] = useState<{
-        data: ImageData;
-        imageIndex: number;
-    } | null>(null);
+    const [fullscreen, setFullscreen] = useState<FullscreenRequest | null>(
+        null,
+    );
 
     const imagesWithLocation = (images as ImageData[]).filter(
         (image) => image.latitude && image.longitude,
     );
-
-    const handleFullscreenNav = (direction: "prev" | "next") => {
-        if (!fullscreenImage) return;
-        const { data, imageIndex } = fullscreenImage;
-        const newIndex =
-            direction === "prev"
-                ? (imageIndex - 1 + data.paths.length) % data.paths.length
-                : (imageIndex + 1) % data.paths.length;
-        setFullscreenImage({ data, imageIndex: newIndex });
-    };
 
     return (
         <>
@@ -48,89 +49,21 @@ export default function PhotoPage() {
                     <MapControls showZoom showFullscreen />
                     <PhotoMarkers
                         images={imagesWithLocation}
-                        onFullscreen={(data, imageIndex) =>
-                            setFullscreenImage({ data, imageIndex })
-                        }
+                        lightboxOpen={fullscreen !== null}
+                        onFullscreen={setFullscreen}
                     />
                 </Map>
             </div>
 
-            {/* Fullscreen Lightbox */}
-            {fullscreenImage && (
-                <div
-                    className="animate-in fade-in-0 fixed inset-0 z-50 flex items-center justify-center bg-black/90 duration-200"
-                    onClick={() => setFullscreenImage(null)}
-                >
-                    <button
-                        onClick={() => setFullscreenImage(null)}
-                        className="absolute top-4 right-4 z-10 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
-                        aria-label="Close fullscreen"
-                    >
-                        <X className="size-6" />
-                    </button>
-
-                    {/* Navigation Buttons */}
-                    {fullscreenImage.data.paths.length > 1 && (
-                        <>
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleFullscreenNav("prev");
-                                }}
-                                className="absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
-                                aria-label="Previous image"
-                            >
-                                <ChevronLeft className="size-6" />
-                            </button>
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleFullscreenNav("next");
-                                }}
-                                className="absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
-                                aria-label="Next image"
-                            >
-                                <ChevronRight className="size-6" />
-                            </button>
-                        </>
-                    )}
-
-                    <div
-                        className="pointer-events-none relative max-h-[90vh] max-w-[90vw]"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <div className="pointer-events-auto">
-                            <img
-                                src={
-                                    "https://r2.yencheng.dev" +
-                                    fullscreenImage.data.paths[
-                                        fullscreenImage.imageIndex
-                                    ]
-                                }
-                                alt={fullscreenImage.data.description || ""}
-                                width={1200}
-                                height={1600}
-                                className="max-h-[90vh] max-w-full object-contain"
-                            />
-                        </div>
-                        <div className="pointer-events-auto absolute right-0 bottom-0 left-0 bg-linear-to-t from-black/60 to-transparent p-4 text-white">
-                            <p className="font-medium">
-                                {fullscreenImage.data.description}
-                            </p>
-                            <div className="flex items-center justify-between">
-                                <p className="text-sm text-white/70">
-                                    {fullscreenImage.data.date}
-                                </p>
-                                {fullscreenImage.data.paths.length > 1 && (
-                                    <p className="text-sm text-white/70">
-                                        {fullscreenImage.imageIndex + 1} /{" "}
-                                        {fullscreenImage.data.paths.length}
-                                    </p>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {fullscreen && (
+                <PhotoLightbox
+                    image={fullscreen.data}
+                    startIndex={fullscreen.imageIndex}
+                    origin={fullscreen.origin}
+                    startSize={fullscreen.size}
+                    onIndexChange={fullscreen.syncIndex}
+                    onClosed={() => setFullscreen(null)}
+                />
             )}
         </>
     );
@@ -138,14 +71,17 @@ export default function PhotoPage() {
 
 function PhotoMarkers({
     images,
+    lightboxOpen,
     onFullscreen,
 }: {
     images: ImageData[];
-    onFullscreen: (data: ImageData, imageIndex: number) => void;
+    lightboxOpen: boolean;
+    onFullscreen: (request: FullscreenRequest) => void;
 }) {
     const { map } = useMap();
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [popupImageIndex, setPopupImageIndex] = useState(0);
+    const cardRef = useRef<HTMLDivElement>(null);
 
     const handleMarkerClick = useCallback(
         (image: ImageData, index: number) => {
@@ -221,14 +157,21 @@ function PhotoMarkers({
                     }}
                     className="w-[300px] cursor-default border-0! bg-transparent! p-0! shadow-none! focus:outline-none"
                 >
-                    <div className="group relative isolate aspect-4/3 w-full overflow-hidden rounded-sm shadow-2xl ring-4 ring-white">
+                    {/* Hidden while the lightbox flies the photo out of it */}
+                    <div
+                        ref={cardRef}
+                        className={cn(
+                            "group relative isolate aspect-4/3 w-full overflow-hidden rounded-sm shadow-2xl ring-4 ring-white",
+                            lightboxOpen && "invisible",
+                        )}
+                    >
                         <img
                             src={
                                 "https://r2.yencheng.dev" +
                                 activeImage.paths[popupImageIndex]
                             }
                             alt={activeImage.description || ""}
-                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                            className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-90" />
 
@@ -278,9 +221,22 @@ function PhotoMarkers({
                         </div>
 
                         <button
-                            onClick={() =>
-                                onFullscreen(activeImage, popupImageIndex)
-                            }
+                            onClick={() => {
+                                const card = cardRef.current;
+                                const photo = card?.querySelector("img");
+                                onFullscreen({
+                                    data: activeImage,
+                                    imageIndex: popupImageIndex,
+                                    origin: card,
+                                    size: photo?.naturalWidth
+                                        ? {
+                                              width: photo.naturalWidth,
+                                              height: photo.naturalHeight,
+                                          }
+                                        : undefined,
+                                    syncIndex: setPopupImageIndex,
+                                });
+                            }}
                             className="absolute top-4 right-4 z-10 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
                             aria-label="View fullscreen"
                         >

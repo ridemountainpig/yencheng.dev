@@ -1,16 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import FlightBoard from "@/components/flight-board";
 import PageTitle from "@/components/page-title";
-import {
-    FlightRoutes,
-    resolveAirport,
-    type FlightRouteData,
-} from "@/components/ui/flight";
-import { Map, MapControls, useMap } from "@/components/ui/map";
 import {
     buildFlightLog,
     buildTravelDashboard,
@@ -23,186 +18,32 @@ const ROUTE_COLOR = "#916651";
 const ROUTE_ACTIVE_COLOR = "#8E644F";
 const DESKTOP_PANEL_HEIGHT_CLASS = "lg:h-[min(38rem,72svh)]";
 
-const GLOBE_CENTER: [number, number] = [120.96, 23.75];
-const ROUTE_FOCUS_DURATION_MS = 3000;
+// MapLibre is about 1 MB, so the globe is fetched only once the travel section
+// is within half a screen of view (reached from the portfolio section) rather
+// than with the home page.
+const TravelGlobe = dynamic(() => import("@/components/travel-globe"), {
+    ssr: false,
+});
 
-function clamp(value: number, min: number, max: number): number {
-    return Math.min(Math.max(value, min), max);
-}
-
-function zoomForContainerWidth(widthPx: number): number {
-    if (widthPx < 380) {
-        return 1.1;
-    }
-    if (widthPx < 480) {
-        return 1.2;
-    }
-    if (widthPx < 640) {
-        return 1.33;
-    }
-    if (widthPx < 900) {
-        return 1.5;
-    }
-    return 1.63;
-}
-
-function wrapLongitude(longitude: number): number {
-    return ((((longitude + 180) % 360) + 360) % 360) - 180;
-}
-
-function midpointLongitude(a: number, b: number): number {
-    const delta = ((b - a + 540) % 360) - 180;
-    return wrapLongitude(a + delta / 2);
-}
-
-function haversineKm(a: [number, number], b: [number, number]): number {
-    const toRad = (degree: number) => (degree * Math.PI) / 180;
-    const earthRadiusKm = 6371;
-    const latDelta = toRad(b[1] - a[1]);
-    const lngDelta = toRad(b[0] - a[0]);
-    const sinLat = Math.sin(latDelta / 2);
-    const sinLng = Math.sin(lngDelta / 2);
-    const h =
-        sinLat * sinLat +
-        Math.cos(toRad(a[1])) * Math.cos(toRad(b[1])) * sinLng * sinLng;
-
-    return 2 * earthRadiusKm * Math.asin(Math.sqrt(h));
-}
-
-function resolveRouteFocusViewport(route: FlightRouteData, widthPx: number) {
-    const from = resolveAirport(route.from);
-    const to = resolveAirport(route.to);
-    const distanceKm = haversineKm(from, to);
-
-    let zoom = 1.85;
-    if (distanceKm < 1200) {
-        zoom = 4.2;
-    } else if (distanceKm < 2500) {
-        zoom = 3.4;
-    } else if (distanceKm < 4500) {
-        zoom = 2.9;
-    } else if (distanceKm < 7000) {
-        zoom = 2.45;
-    } else if (distanceKm < 10000) {
-        zoom = 2.1;
-    }
-
-    if (widthPx < 640) {
-        zoom -= 0.55;
-    } else if (widthPx < 900) {
-        zoom -= 0.25;
-    }
-
-    return {
-        center: [
-            midpointLongitude(from[0], to[0]),
-            clamp((from[1] + to[1]) / 2, -70, 70),
-        ] as [number, number],
-        zoom: clamp(zoom, 1.45, 4.5),
-    };
-}
-
-function TravelGlobeViewportSync({
-    selectedRoute,
-}: {
-    selectedRoute: FlightRouteData | null;
-}) {
-    const { map, isLoaded } = useMap();
-
-    const applyViewport = useCallback(
-        (animate: boolean) => {
-            if (!map || !isLoaded) {
-                return;
-            }
-
-            map.resize();
-            const width = map.getContainer().clientWidth;
-
-            if (selectedRoute) {
-                const focusedViewport = resolveRouteFocusViewport(
-                    selectedRoute,
-                    width,
-                );
-
-                if (animate) {
-                    map.flyTo({
-                        ...focusedViewport,
-                        pitch: 0,
-                        bearing: 0,
-                        duration: ROUTE_FOCUS_DURATION_MS,
-                        curve: 1.55,
-                        speed: 0.65,
-                        easing: (t) => 1 - Math.pow(1 - t, 3),
-                        essential: true,
-                    });
-                    return;
-                }
-
-                map.jumpTo({
-                    ...focusedViewport,
-                    pitch: 0,
-                    bearing: 0,
-                });
-                return;
-            }
-
-            if (animate) {
-                map.flyTo({
-                    center: GLOBE_CENTER,
-                    zoom: zoomForContainerWidth(width),
-                    pitch: 0,
-                    bearing: 0,
-                    duration: ROUTE_FOCUS_DURATION_MS,
-                    curve: 1.55,
-                    speed: 0.65,
-                    easing: (t) => 1 - Math.pow(1 - t, 3),
-                    essential: true,
-                });
-                return;
-            }
-
-            map.jumpTo({
-                center: GLOBE_CENTER,
-                zoom: zoomForContainerWidth(width),
-                pitch: 0,
-                bearing: 0,
-            });
-        },
-        [isLoaded, map, selectedRoute],
-    );
-
-    const applyViewportRef = useRef(applyViewport);
-    applyViewportRef.current = applyViewport;
+function useNearViewport<T extends Element>() {
+    const ref = useRef<T>(null);
+    const [near, setNear] = useState(false);
 
     useEffect(() => {
-        applyViewport(true);
-    }, [applyViewport, selectedRoute]);
+        const element = ref.current;
+        if (!element || near) return;
 
-    useEffect(() => {
-        if (!map || !isLoaded) {
-            return;
-        }
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry?.isIntersecting) setNear(true);
+            },
+            { rootMargin: "50% 0px" },
+        );
+        observer.observe(element);
+        return () => observer.disconnect();
+    }, [near]);
 
-        // Use ref so resize callbacks always call the latest applyViewport
-        // without re-observing on every selectedRoute change, which would fire
-        // an immediate spurious callback that overrides the flyTo animation.
-        const apply = () => applyViewportRef.current(false);
-        const el = map.getContainer();
-        const ro = new ResizeObserver(apply);
-        ro.observe(el);
-
-        window.addEventListener("resize", apply);
-        window.addEventListener("orientationchange", apply);
-
-        return () => {
-            ro.disconnect();
-            window.removeEventListener("resize", apply);
-            window.removeEventListener("orientationchange", apply);
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLoaded, map]);
-
-    return null;
+    return [ref, near] as const;
 }
 
 const dashboard = buildTravelDashboard(TRAVEL_FLIGHT_LEGS);
@@ -254,6 +95,7 @@ function StatCard({
 }
 
 export default function Travel() {
+    const [globeRef, nearViewport] = useNearViewport<HTMLDivElement>();
     const [selectedRouteIndex, setSelectedRouteIndex] = useState<number | null>(
         null,
     );
@@ -296,54 +138,25 @@ export default function Travel() {
     );
 
     return (
-        <div className="text-white-black-900 bg-white-black-50 flex h-full min-h-0 w-full flex-col pt-6">
+        <div className="text-white-black-900 flex w-full flex-col pt-20 sm:pt-24">
             <PageTitle title="My Travel" />
-            <div className="no-scrollbar flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-4 pb-10 sm:px-8">
+            <div className="flex flex-col gap-6 px-4 pb-10 sm:px-8">
                 <div className="mx-auto mt-4 grid w-full max-w-6xl gap-5 sm:mt-6 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-stretch">
                     <div
+                        ref={globeRef}
                         className={cn(
                             "border-white-brown-600/60 relative mx-auto aspect-square w-full max-w-[min(48rem,85svh)] overflow-hidden rounded-2xl border shadow-md lg:aspect-auto lg:max-w-none",
                             DESKTOP_PANEL_HEIGHT_CLASS,
                         )}
                     >
-                        <Map
-                            className="h-full w-full [&_.maplibregl-ctrl-attrib]:text-[10px]!"
-                            projection={{ type: "globe" }}
-                            center={GLOBE_CENTER}
-                            zoom={1.63}
-                            pitch={0}
-                            bearing={0}
-                            minZoom={0.5}
-                            maxZoom={6}
-                            scrollZoom={true}
-                            // Page scroll passes over the globe; zooming takes
-                            // ⌘/Ctrl + scroll, panning on touch takes two fingers.
-                            cooperativeGestures={true}
-                            dragRotate={false}
-                            touchPitch={false}
-                        >
-                            <TravelGlobeViewportSync
-                                selectedRoute={selectedRoute}
-                            />
-                            <FlightRoutes
+                        {nearViewport && (
+                            <TravelGlobe
                                 routes={mapRoutes}
+                                selectedRoute={selectedRoute}
                                 color={ROUTE_COLOR}
-                                width={2}
-                                opacity={0.85}
-                                showAirports
-                                showLabel
-                                labelClassName="!text-[9px] font-semibold"
-                                hoverEffect
-                                onClick={(routeIndex) =>
-                                    setSelectedRouteIndex(routeIndex)
-                                }
+                                onSelectRoute={setSelectedRouteIndex}
                             />
-                            <MapControls
-                                position="bottom-left"
-                                showZoom
-                                className="bottom-2 left-2"
-                            />
-                        </Map>
+                        )}
                     </div>
 
                     <FlightBoard

@@ -13,7 +13,7 @@ export default async function Raycast() {
     ]);
 
     return (
-        <div className="bg-white-black-50 text-white-black-900 flex h-full w-full flex-col pt-6">
+        <div className="text-white-black-900 flex min-h-dvh w-full flex-col pt-20 sm:pt-24">
             <TabKeyHandler />
             <PageTitle title="My Raycast Extensions"></PageTitle>
             <div className="flex min-h-0 w-full flex-1 items-center justify-center px-1 pb-6">

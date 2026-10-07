@@ -11,7 +11,6 @@ import Travel from "@/components/travel";
 import {
     getHomeSectionFromIndex,
     getHomeSectionIndexFromQuery,
-    HOME_SCROLLER_ID,
     HOME_SECTIONS,
     type HomeSection,
 } from "@/lib/home-sections";
@@ -104,7 +103,7 @@ const SECTION_TITLES = Object.fromEntries(
 
 /** Scrolls a deep-linked section into place before first paint. */
 function initialScrollScript(section: HomeSection) {
-    return `(()=>{const s=document.getElementById("${HOME_SCROLLER_ID}");const t=s&&s.querySelector('[data-home-section="${section}"]');if(t)s.scrollTop=t.offsetTop})()`;
+    return `document.querySelector('[data-home-section="${section}"]')?.scrollIntoView()`;
 }
 
 export async function generateMetadata({
@@ -133,11 +132,14 @@ export default async function Home({ params }: PageProps) {
                 initialSection={initialSection}
                 titles={SECTION_TITLES}
             >
-                <HomeScrollSection section="home">
-                    <Header></Header>
+                <Header></Header>
+                <HomeScrollSection section="home" className="h-dvh">
                     <Banner></Banner>
                 </HomeScrollSection>
-                <HomeScrollSection section="portfolio">
+                <HomeScrollSection
+                    section="portfolio"
+                    className="h-dvh min-h-[36rem]"
+                >
                     <Portfolio></Portfolio>
                 </HomeScrollSection>
                 <HomeScrollSection section="travel">

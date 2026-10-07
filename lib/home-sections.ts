@@ -32,9 +32,6 @@ export const HOME_SECTION_LABELS: Record<HomeSection, string> = {
     footer: "Contact",
 };
 
-/** Element id of the vertical scroller that holds every home section. */
-export const HOME_SCROLLER_ID = "home-scroller";
-
 function normalizeQueryValue(value: QueryValue) {
     if (Array.isArray(value)) {
         return value[0]?.trim().toLowerCase();

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -53,6 +53,10 @@ export const metadata: Metadata = {
         site: "@ridemountainpig",
         creator: "@ridemountainpig",
     },
+};
+
+export const viewport: Viewport = {
+    themeColor: "#fafafa",
 };
 
 const personSchema = {
