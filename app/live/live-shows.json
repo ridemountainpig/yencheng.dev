@@ -38,6 +38,13 @@
     ],
     "shows": [
         {
+            "date": "2026-09-23",
+            "artist": "南西肯恩 NeciKen × 傻子與白痴 FOOL AND IDIOT",
+            "title": "秋分：完美的平衡",
+            "venue": "Legacy Taipei",
+            "image": "/live/shows/2026-09-23-neciken.webp"
+        },
+        {
             "date": "2026-08-30",
             "artist": "163braces",
             "title": "小劇場：夏天的尾巴",

@@ -117,6 +117,15 @@ export default function Dock() {
             link: false,
         },
         {
+            src: "/dock/threads-analytics.png",
+            alt: "threads analytics icon",
+            className: "rounded-xl cursor-pointer",
+            label: "Threads Analytics",
+            url: "https://threads-analytics.app/",
+            showInfo: false,
+            link: false,
+        },
+        {
             src: "/dock/subflow.png",
             alt: "subflow icon",
             className: "rounded-xl cursor-pointer",
@@ -149,38 +158,6 @@ export default function Dock() {
                     secondBg: "bg-[#27272a95]",
                     icon: "text-[#faf0e6]",
                     text: "text-[#faf0e6]",
-                },
-            },
-        },
-        {
-            src: "/dock/coffee-diary.png",
-            alt: "coffee diary icon",
-            className: "rounded-xl bg-[#FAF9F2] cursor-pointer",
-            label: "Coffee Diary",
-            url: "https://www.coffee-diary.com/",
-            showInfo: true,
-            link: false,
-            info: {
-                title: "Coffee Diary",
-                description:
-                    "Engineers often need a cup of coffee to accompany their coding sessions each day, and every cup of coffee has its unique flavor worth documenting. This inspired the idea for the Coffee Diary project.\nCoffee Diary allows users to record their daily coffee experiences through a JSON file, including details like coffee bean types, origins, and flavor descriptions. These records are then visualized into beautiful SVG graphics for documenting and sharing their coffee journal.\nUsers simply need to create a file named coffee-diary.json in their GitHub repository and fill it out according to the specified format. Once completed, the system will generate a corresponding coffee journal SVG image for personal display or sharing with others. Users can even access their records directly on the Coffee Diary website, making the entire process efficient and convenient.\nCoffee Diary not only enhances the convenience of recording and sharing coffee experiences but also offers developers a fun way to integrate life and technology, presenting each day's coffee memories in a visually appealing format.",
-                tech: "TypeScript, Next.js, Tailwind CSS",
-                picture: [
-                    {
-                        src: "/coffee-diary/1.png",
-                        description: "Personal Coffee Diary",
-                    },
-                    {
-                        src: "/coffee-diary/2.png",
-                        description: "Coffee Diary SVG",
-                    },
-                ],
-                style: {
-                    border: "border-white-brown-600",
-                    bg: "bg-white-brown-400",
-                    secondBg: "bg-white-brown-600/50",
-                    icon: "text-white-brown-600",
-                    text: "text-white-black-900",
                 },
             },
         },
