@@ -16,7 +16,7 @@
         "@turf/bearing": "^7.3.4",
         "@turf/great-circle": "^7.3.4",
         "@types/canvas-confetti": "^1.9.0",
-        "@vercel/analytics": "^1.6.1",
+        "@vercel/analytics": "^2.0.1",
         "@vercel/og": "^0.8.5",
         "canvas-confetti": "^1.9.4",
         "class-variance-authority": "^0.7.1",
